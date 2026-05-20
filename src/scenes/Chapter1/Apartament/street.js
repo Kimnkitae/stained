@@ -24,6 +24,7 @@ export default class BaseStreetScene extends Phaser.Scene {
 
     initPlayer(x, y) {
         this.isTextShowing = false
+        this.nextText = null
         
         const jsonText = this.cache.json.get('chapter1Scene1')
         this.streetText = jsonText.apartament.scene1.street
@@ -35,7 +36,7 @@ export default class BaseStreetScene extends Phaser.Scene {
             
             let currentKey = collidedObj.getData('textKey')
             const text = this.streetText[currentKey]
-            const nextText = new NextText(this, text)
+            this.nextText = new NextText(this, text)
             
         })
         
@@ -52,6 +53,7 @@ export default class BaseStreetScene extends Phaser.Scene {
         if (this.player) this.player.update()
         if (this.isTextShowing && this.player && this.player.sprite.body.touching.none) {
             this.isTextShowing = false
+            this.nextText = null
         }
 
 
