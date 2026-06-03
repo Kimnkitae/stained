@@ -39,12 +39,7 @@
         }
       },
       "apartament": {
-        "firstLine": {
-          "type": "chat",
-          "speaker": "Player",
-          "text": ["mmmm..", "SO difficult to live on the fourth floor"],
-          "info": "First line in the apart scene"
-        },
+        
         "enterToRoom": {
           "type": "choice",
           "speaker": "System",
@@ -81,16 +76,23 @@
         },
         "momInteract": {
           "type": "chat",
-          "speaker": "dev",
+          "speaker": "mom",
           "text": ["Son, i'm too tired", "Maybe later?"],
           "info": "Talking with mom"
         },
         "ImageInteract": {
           "type": "chat",
-          "speaker": "dev",
+          "speaker": "player",
           "text": ["Mom bought it on the sale", "There is a sentence", "by Da Vinchi"],
           "info": "About the image"
+        },
+        "tvInteract": {
+          "type": "chat",
+          "speaker": "player",
+          "text": ["TV is a good rest time, isn't it?"],
+          "info": "About TV"
         }
+        
       },
       "room": {
         "windowInteract": {

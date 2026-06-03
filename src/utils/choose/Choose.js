@@ -44,25 +44,12 @@ export default class Choose {
     handleSelect() {
         if (this.firstChooseState) {
             
-            
-            
-            
             if (this.toDo) {
                 this.toDo() 
             }
             
-            
-            if (this.chooseKey.options[0].callback) {
-                this.chooseKey.options[0].callback()
-            }
-            
         } else if (this.secondChooseState) {
             
-            
-            
-            if (this.chooseKey.options[1].callback) {
-                this.chooseKey.options[1].callback()
-            }
         }
         
         

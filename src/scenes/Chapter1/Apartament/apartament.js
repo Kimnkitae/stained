@@ -1,4 +1,6 @@
 import Player from '../../../utils/player/player.js'
+import NextText from '../../../utils/texts/nextText.js'
+import Choose from '../../../utils/choose/Choose.js'
 
 export default class BaseApartamentScene extends Phaser.Scene {
     constructor(config) {
@@ -17,15 +19,18 @@ export default class BaseApartamentScene extends Phaser.Scene {
         this.walls.create(135, 215, 'C1AS3_leftWall')
         this.walls.create(908, 215, 'C1AS3_leftWall')
         this.walls.create(521, 424, 'C1AS3_bottomWall')
-        this.room.create(190, 80, 'C1AS3_room')
-        this.kitchen.create(902, 165, 'C1AS3_kitchen')
-        this.furniture.create(235, 288, 'C1AS3_chair')
-        this.furniture.create(235, 355, 'C1AS3_tv')
+        this.room.create(190, 80, 'C1AS3_room').setData('textKey', "enterToRoom")
+        this.kitchen.create(902, 165, 'C1AS3_kitchen').setData('textKey', "enterToKitchen")
+        this.furniture.create(235, 288, 'C1AS3_chair').setData('momInteract')
+        this.furniture.create(235, 355, 'C1AS3_tv').setData('textKey', 'tvInteract')
         this.exit.create(509, 81, 'C1AS3_exit')
     }
 
     initPlayer(x, y) {
         this.player = new Player(this, x, y)
+
+        this.isTextShowing = false
+        this.nextText = null
         this.physics.add.collider(this.player.sprite, this.walls, () => {
             
         })
