@@ -5,12 +5,14 @@ import { Chapter1ApartamentScene4 } from './scenes/Chapter1/Apartament/scene4.js
 import { Chapter1ApartamentScene5 } from './scenes/Chapter1/Apartament/scene5.js'
 import { Chapter1ApartamentScene6 } from './scenes/Chapter1/Apartament/scene6.js'
 import { Chapter1ApartamentScene7 } from './scenes/Chapter1/Apartament/scene7.js'
+import { Kitchen } from './scenes/Chapter1/Apartament/kitchen.js'
 
 export const allScenes = [
     Chapter1ApartamentScene1,
     Chapter1ApartamentScene2,
     Chapter1ApartamentScene3,
     Chapter1ApartamentScene4,
+    Kitchen,
     Chapter1ApartamentScene5,
     Chapter1ApartamentScene6,
     Chapter1ApartamentScene7

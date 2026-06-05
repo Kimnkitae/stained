@@ -45,6 +45,10 @@ export default class Bootloader extends Phaser.Scene {
         this.load.image('C1AS4_topWall', 'assets/room/topWall.png')
         this.load.image('C1AS4_windows', 'assets/room/windows.png')
 
+        /* kitchen */
+
+        this.load.image('kitchen', 'assets/kitchen/kitchen.png')
+
     }
 
     loadSounds() {
