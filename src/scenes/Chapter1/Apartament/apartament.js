@@ -23,7 +23,7 @@ export default class BaseApartamentScene extends Phaser.Scene {
         this.kitchen.create(902, 165, 'C1AS3_kitchen').setData('textKey', "enterToKitchen")
         this.furniture.create(235, 288, 'C1AS3_chair').setData('textKey', 'momInteract')
         this.furniture.create(235, 355, 'C1AS3_tv').setData('textKey', 'tvInteract')
-        this.exit.create(509, 81, 'C1AS3_exit')
+        this.exit.create(509, 81, 'C1AS3_exit').setData('textKey', 'exit')
     }
 
     initPlayer(x, y) {
@@ -50,6 +50,22 @@ export default class BaseApartamentScene extends Phaser.Scene {
                 })
         })
 
+        this.physics.add.collider(this.player.sprite, this.exit, (player, collidedObj) => {
+            if(this.isTextShowing) return
+            this.isTextShowing = true
+            this.player.isFrozen = true
+            this.player.sprite.setVelocity(0)
+            let currentKey = collidedObj.getData('textKey')
+            const text = this.apartamentText[currentKey]
+            this.nextText = new Choose(this, text, () => {
+            this.isTextShowing = false
+            this.player.isFrozen = false
+            this.nextText = null
+                }, () => {
+                    this.scene.start('Chapter1ApartamentScene2', { from: 'kitchen', spawnData: 'exit'})
+                })
+        })
+
         this.physics.add.collider(this.player.sprite, this.kitchen, (player, collidedObj) => {
             if(this.isTextShowing) return
             this.isTextShowing = true
@@ -62,7 +78,7 @@ export default class BaseApartamentScene extends Phaser.Scene {
             this.player.isFrozen = false
             this.nextText = null
                 }, () => {
-                    this.scene.start('kitchen')
+                    this.scene.start('Chapter1ApartamentScene4Kitchen')
                 })
         })
 

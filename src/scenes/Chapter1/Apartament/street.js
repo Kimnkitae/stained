@@ -58,7 +58,7 @@ export default class BaseStreetScene extends Phaser.Scene {
                 this.player.isFrozen = false
                 this.nextText = null
             }, () => {
-                this.scene.start('Chapter1ApartamentScene3')
+                this.scene.start('Chapter1ApartamentScene3', {spawnPoint: 'exit', from: 'street'})
             }) 
             
         })

@@ -39,7 +39,6 @@
         }
       },
       "apartament": {
-        
         "enterToRoom": {
           "type": "choice",
           "speaker": "System",
@@ -91,8 +90,56 @@
           "speaker": "player",
           "text": ["TV is a good rest time, isn't it?"],
           "info": "About TV"
+        },
+         "exit": {
+          "type": "choice",
+          "speaker": "System",
+          "question": "Go outside?",
+            "options": [
+            { 
+              "text": "Yes", 
+              "next_scene": "Chapter1ApartamentScene2",
+              "action": "open_door" 
+            },
+            { 
+              "text": "No", 
+              "next_scene": null,
+              "action": "stay_in_room" 
+            }
+          ]
         }
         
+      },
+      "kitchen": {
+        "furnitureInteract": {
+          "type": "chat",
+          "speaker": "player",
+          "text": ["They cook and wash dishes here"],
+          "info": "About the furniture"
+        },
+        "fridge": {
+          "type": "chat",
+          "speaker": "dev",
+          "text": ["There is no food", "only ketchup"],
+          "info": "About the fridge"
+        },
+        "exit": {
+          "type": "choice",
+          "speaker": "System",
+          "question": "Go back?",
+            "options": [
+            { 
+              "text": "Yes", 
+              "next_scene": "Chapter1ApartamentScene3",
+              "action": "open_door" 
+            },
+            { 
+              "text": "No", 
+              "next_scene": null,
+              "action": "stay_in_kitchen" 
+            }
+          ]
+        }
       },
       "room": {
         "windowInteract": {
