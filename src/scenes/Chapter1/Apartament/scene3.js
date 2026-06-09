@@ -15,6 +15,9 @@ export class Chapter1ApartamentScene3 extends BaseApartamentScene {
         if(data && data.spawnPoint === 'exit' && data.from == 'kitchen') {
             super.initPlayer(850, 150)  
         }
+        if(data && data.spawnPoint === 'exit' && data.from == 'room') {
+            super.initPlayer(180, 150)  
+        }
         if(data && data.spawnPoint === 'exit' && data.from == 'street') {
             super.initPlayer(510, 130) 
         }

@@ -164,6 +164,23 @@
               "action": "stay_in_room" 
             }
           ]
+        },
+        "roomExit": {
+          "type": "choice",
+          "speaker": "System",
+          "question": "Go to apartament?",
+            "options": [
+            { 
+              "text": "Yes", 
+              "next_scene": "Chapter1ApartamentScene3",
+              "action": "go_to_apart" 
+            },
+            { 
+              "text": "No", 
+              "next_scene": null,
+              "action": "stay_in_room" 
+            }
+          ]
         }
       }
 

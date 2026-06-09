@@ -7,7 +7,7 @@ export class Chapter1ApartamentScene4 extends BaseRoomScene {
 
     create() {
         super.create()
-        super.initPlayer(450, 380)
-        
+        super.initPlayer(420, 470)
+        this.add.image(100, 600, 'placeholder')
     }
 }
