@@ -3,7 +3,7 @@ import Player from '../../../utils/player/player.js'
 import NextText from '../../../utils/texts/nextText.js'
 import Choose from '../../../utils/choose/Choose.js'
 
-export default class Chapter1ApartamentScene5 extends Phaser.Scene {
+export class Chapter1ApartamentScene5 extends Phaser.Scene {
     constructor() {
         super({ key: 'Chapter1ApartamentScene5'})
     }
@@ -49,26 +49,12 @@ export default class Chapter1ApartamentScene5 extends Phaser.Scene {
                 this.player.isFrozen = false
                 this.nextText = null
             }, () => {
-                this.scene.start('Chapter1ApartamentScene3', { from: 'room', spawnPoint: 'exit'})
+                this.scene.start('Chapter1ApartamentScene5Apartament', { from: 'room', spawnPoint: 'exit'})
             })
                                 
         })
 
-        this.physics.add.collider(this.player.sprite, this.bed, (player, collidedObj) => {
-            if(this.isTextShowing) return
-            this.isTextShowing = true
-            this.player.isFrozen = true
-            this.player.sprite.setVelocity(0)
-            let currentKey = collidedObj.getData('textKey')
-            const text = this.roomText[currentKey]
-            this.nextText = new Choose(this, text, () => {
-                this.isTextShowing = false
-                this.player.isFrozen = false
-                this.nextText = null
-            }, () => {
-                this.scene.start('Chapter1ApartamentScene5')
-            })
-        })
+        this.physics.add.collider(this.player.sprite, this.bed)
     }
 
     update() {

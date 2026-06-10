@@ -24,6 +24,16 @@ export default class Chapter1ApartamentScene5Apartament extends Phaser.Scene {
         this.furniture.create(235, 288, 'C1AS3_chair').setData('textKey', 'momInteract')
         this.furniture.create(235, 355, 'C1AS3_tv').setData('textKey', 'tvInteract')
         this.exit.create(509, 81, 'C1AS3_exit').setData('textKey', 'exit')
+
+        if(data && data.spawnPoint === 'exit' && data.from == 'kitchen') {
+            super.initPlayer(850, 150)  
+        }
+        if(data && data.spawnPoint === 'exit' && data.from == 'room') {
+            super.initPlayer(180, 150)  
+        }
+        if(data && data.spawnPoint === 'exit' && data.from == 'street') {
+            super.initPlayer(510, 130) 
+        }
     }
 
     initPlayer(x, y) {
@@ -46,7 +56,7 @@ export default class Chapter1ApartamentScene5Apartament extends Phaser.Scene {
             this.player.isFrozen = false
             this.nextText = null
                 }, () => {
-                    this.scene.start('Chapter1ApartamentScene4')
+                    this.scene.start('Chapter1ApartamentScene5')
                 })
         })
 
