@@ -19,7 +19,7 @@ const config = {
         default: 'arcade', 
         arcade: {
             gravity: { y: 0 },
-            debug: false// видеть границы объектов    
+            debug: true  // видеть границы объектов    
         }
     },
     fps: {
