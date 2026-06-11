@@ -9,7 +9,17 @@ export class Chapter1ApartamentScene5 extends Phaser.Scene {
     }
 
     create() {
+        const overlay = this.add.rectangle(
+          this.scale.width / 2,
+          this.scale.height / 2,
+          this.scale.width,
+          this.scale.height,
+          0x000000,        
+          0.5              
+        )
+        overlay.setDepth(100)
         this.add.image(500, 300, 'room')
+        this.add.image(100, 600, 'placeholder')
         this.walls = this.physics.add.staticGroup()
         this.windows = this.physics.add.staticGroup()
         this.door = this.physics.add.staticGroup()
@@ -21,23 +31,16 @@ export class Chapter1ApartamentScene5 extends Phaser.Scene {
         this.walls.create(499, 526, 'C1AS4_topWall')
 
         this.door.create(415, 515, 'C1AS4_door').setData('textKey', 'roomExit')
-        this.windows.create(478, 93, 'C1AS4_windows')
+        this.windows.create(478, 93, 'C1AS4_windows').setData('textKey', 'windows')
         this.bed.create(570, 212, 'C1AS4_bed').setData('textKey', 'bedInteract')
-        
-    }
-
-    initPlayer(x, y) {
-        this.player = new Player(this, x, y)
-        
+        this.player = new Player(this, 570, 200)
         const jsonText = this.cache.json.get('chapter1Scene1')
-        this.roomText = jsonText.apartament.scene1.room
+        this.roomText = jsonText.apartament.scene1.night.room
         this.isTextShowing = false
         this.nextText = null
         this.physics.add.collider(this.player.sprite, this.walls)
 
-        this.physics.add.collider(this.player.sprite, this.windows)
-
-        this.physics.add.collider(this.player.sprite, this.door, (player, collidedObj) => {
+        this.physics.add.collider(this.player.sprite, this.windows, (player, collidedObj) => {
             if(this.isTextShowing) return
             this.isTextShowing = true
             this.player.isFrozen = true
@@ -49,10 +52,11 @@ export class Chapter1ApartamentScene5 extends Phaser.Scene {
                 this.player.isFrozen = false
                 this.nextText = null
             }, () => {
-                this.scene.start('Chapter1ApartamentScene5Apartament', { from: 'room', spawnPoint: 'exit'})
+                this.scene.start('Chapter1ApartamentScene5Window')
             })
-                                
         })
+
+        this.physics.add.collider(this.player.sprite, this.door)
 
         this.physics.add.collider(this.player.sprite, this.bed)
     }

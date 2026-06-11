@@ -54,6 +54,10 @@ export default class Bootloader extends Phaser.Scene {
         this.load.image('kitchen-fridge', 'assets/kitchen/fridge.png')
         this.load.image('kitchen-leftWall', 'assets/kitchen/leftWall.png')
         this.load.image('kitchen-topWall', 'assets/kitchen/topWall.png')
+
+        /* night-room */
+
+        this.load.image('C1AS5_look', 'assets/apartament/guest-outside.png')
         
 
     }
@@ -80,6 +84,6 @@ export default class Bootloader extends Phaser.Scene {
     }
     
     create() {
-        this.scene.start('Chapter1ApartamentScene1')
+        this.scene.start('Chapter1ApartamentScene5')
     }
 }

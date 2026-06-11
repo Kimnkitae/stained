@@ -192,7 +192,22 @@
       "night": {
         "room": {
           "windows": {
-
+            "type": "choice",
+            "speaker": "System",
+            "question": "Look at window?",
+            "options": 
+            [
+              { 
+                "text": "Yes", 
+                "next_scene": "Chapter1ApartamentScene5Window",
+                "action": "go_to_apart" 
+              },
+              { 
+                "text": "No", 
+                "next_scene": null,
+                "action": "stay_in_room" 
+              }
+            ]
           },
           "roomExit": {
           "type": "choice",
