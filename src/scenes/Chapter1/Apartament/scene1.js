@@ -14,6 +14,7 @@ export class Chapter1ApartamentScene1 extends Phaser.Scene {
 
     create()
     {
+        
         this.add.image(500, 200, 'C1AS1_street')
         this.add.image(150, 200, 'C1AS1_player-sleep')
         this.add.image(300, 600, 'placeholder')

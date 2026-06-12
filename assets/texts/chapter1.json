@@ -191,6 +191,36 @@
       },
       "night": {
         "room": {
+          "firstLine": {
+            "type": "chat",
+            "speaker": "Player",
+            "text": ["...", "What's the fuck", "!!!!", "He saw me!"],
+            "info": "First line in the game"
+          },
+          "secondLine": {
+            "type": "chat",
+            "speaker": "Player",
+            "text": ["*knock* *knock*", "!!!", "I need to take knife"],
+            "info": "First line in the game"
+          },
+          "sleepAndNothing": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "You want sleep now??",
+            "options": 
+            [
+              { 
+                "text": "Yes", 
+                "next_scene": "Chapter1End",
+                "action": "go_to_apart" 
+              },
+              { 
+                "text": "No", 
+                "next_scene": null,
+                "action": "stay_in_room" 
+              }
+            ]
+          },
           "windows": {
             "type": "choice",
             "speaker": "System",

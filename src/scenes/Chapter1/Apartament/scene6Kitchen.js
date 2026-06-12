@@ -2,9 +2,9 @@ import Player from '../../../utils/player/player.js'
 import NextText from '../../../utils/texts/nextText.js'
 import Choose from '../../../utils/choose/Choose.js'
 
-export default class Chapter1ApartamentScene5Kitchen extends Phaser.Scene {
+export default class Chapter1ApartamentScene6Kitchen extends Phaser.Scene {
     constructor() {
-        super({ key: 'Chapter1ApartamentScene5Kitchen'})
+        super({ key: 'Chapter1ApartamentScene6Kitchen'})
          
     }
 

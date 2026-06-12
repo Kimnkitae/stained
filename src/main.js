@@ -32,7 +32,14 @@ const config = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
+    callbacks: {
+        postBoot: (game) => {
+            game.registry.set('karma', 0);
+        }
+    }
 }
+
+
 
 new Phaser.Game(config)
             
