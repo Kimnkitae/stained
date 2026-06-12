@@ -2,13 +2,22 @@ import Player from '../../../utils/player/player.js'
 import NextText from '../../../utils/texts/nextText.js'
 import Choose from '../../../utils/choose/Choose.js'
 
-export default class Chapter1ApartamentScene6Kitchen extends Phaser.Scene {
+export class Chapter1ApartamentScene6Kitchen extends Phaser.Scene {
     constructor() {
         super({ key: 'Chapter1ApartamentScene6Kitchen'})
          
     }
 
     create() { 
+        const overlay = this.add.rectangle(
+          this.scale.width / 2,
+          this.scale.height / 2,
+          this.scale.width,
+          this.scale.height,
+          0x000000,        
+          0.5              
+        )
+        overlay.setDepth(100)
         this.add.image(300, 250, 'kitchen')
         this.add.image(300, 600, 'placeholder')
         this.walls = this.physics.add.staticGroup()
@@ -20,16 +29,13 @@ export default class Chapter1ApartamentScene6Kitchen extends Phaser.Scene {
          
         this.walls.create(495, 250, 'kitchen-leftWall')
         this.walls.create(300, 445, 'kitchen-topWall')
-        this.furniture.create(247, 97, 'kitchen-furniture').setData('textKey', 'furnitureInteract')
+        this.furniture.create(247, 97, 'kitchen-furniture').setData('textKey', 'knife')
         this.furniture.create(401, 97, 'kitchen-fridge').setData('textKey', 'fridge')
         this.exit.create(112, 310, 'kitchen-door').setData('textKey', 'exit')
          
-    }
-
-    initPlayer(x, y) {
-        this.player = new Player(this, x, y)
+        this.player = new Player(this, 150, 300)
         const jsonText = this.cache.json.get('chapter1Scene1')
-        this.kitchenText = jsonText.apartament.scene1.kitchen
+        this.kitchenText = jsonText.apartament.scene1.night.kitchenNight
         this.isTextShowing = false
         this.nextText = null
         this.physics.add.collider(this.player.sprite, this.walls)
@@ -46,39 +52,27 @@ export default class Chapter1ApartamentScene6Kitchen extends Phaser.Scene {
             this.player.isFrozen = false
             this.nextText = null
                 }, () => {
-                    this.scene.start('Chapter1ApartamentScene3', { spawnPoint: 'exit', from: 'kitchen' })
+                    this.scene.start('Chapter1ApartamentScene6Apartament', { spawnPoint: 'exit', from: 'kitchen' })
 
                 })
         })
 
-        this.physics.add.collider(this.player.sprite, this.fridge, (player, collidedObj) => {
-            if(this.isTextShowing) return
-            this.isTextShowing = true
-            this.player.isFrozen = true
-            this.player.sprite.setVelocity(0)
-            let currentKey = collidedObj.getData('textKey')
-            const text = this.kitchenText[currentKey]
-            this.nextText = new Choose(this, text, () => {
-            this.isTextShowing = false
-            this.player.isFrozen = false
-            this.nextText = null
-                }, () => {
-                    this.scene.start('kitchen')
-                })
-        })
+        this.physics.add.collider(this.player.sprite, this.fridge)
 
         this.physics.add.collider(this.player.sprite, this.furniture, (player, collidedObj) => {
             if(this.isTextShowing) return
-            this.isTextShowing = true
-            this.player.isFrozen = true
-            let currentKey = collidedObj.getData('textKey')
-            const text = this.kitchenText[currentKey]
-            this.nextText = new NextText(this, text, () => {
+                this.isTextShowing = true
+                this.player.isFrozen = true
+                this.player.sprite.setVelocity(0)
+                let currentKey = collidedObj.getData('textKey')
+                const text = this.kitchenText[currentKey]
+                this.nextText = new Choose(this, text, () => {
                 this.isTextShowing = false
                 this.player.isFrozen = false
-                this.player.addMovements = true
                 this.nextText = null
-            }) 
+            }, () => {
+                this.scene.start('Chapter1ApartamentScene7')
+            })
         })
 
         

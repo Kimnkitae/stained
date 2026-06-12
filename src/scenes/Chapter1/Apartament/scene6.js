@@ -39,6 +39,9 @@ export class Chapter1ApartamentScene6 extends Phaser.Scene {
         }
         const jsonText = this.cache.json.get('chapter1Scene1')
         this.roomText = jsonText.apartament.scene1.night.room
+        this.nextTex = new NextText(this, jsonText.apartament.scene1.night.room.firstLine, () => {
+            
+        })
         this.isTextShowing = false
         this.nextText = null
         this.physics.add.collider(this.player.sprite, this.walls)

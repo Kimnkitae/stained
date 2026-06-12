@@ -10,7 +10,10 @@ import { Chapter1ApartamentScene7 } from './scenes/Chapter1/Apartament/scene7.js
 import { Chapter1ApartamentScene4Kitchen } from './scenes/Chapter1/Apartament/scene4Kitchen.js'
 import { Chapter1ApartamentScene5Window } from './scenes/Chapter1/Apartament/scene5Window.js'
 import { Chapter1ApartamentScene6Apartament } from './scenes/Chapter1/Apartament/scene6Apartament.js'
+import { Chapter1ApartamentScene6Kitchen } from './scenes/Chapter1/Apartament/scene6Kitchen.js'
 import { Chapter1End } from './scenes/Chapter1/Apartament/scene8.js'
+import { Chapter1ApartamentScene7Apartament } from './scenes/Chapter1/Apartament/scene7Apartament.js'
+
 
 
 export const allScenes = [
@@ -24,5 +27,7 @@ export const allScenes = [
     Chapter1ApartamentScene4Kitchen,
     Chapter1ApartamentScene5Window,
     Chapter1ApartamentScene6Apartament,
-    Chapter1End
+    Chapter1ApartamentScene6Kitchen,
+    Chapter1End,
+    Chapter1ApartamentScene7Apartament
 ]

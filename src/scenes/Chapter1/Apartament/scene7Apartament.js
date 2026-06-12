@@ -2,9 +2,9 @@ import Player from '../../../utils/player/player.js'
 import NextText from '../../../utils/texts/nextText.js'
 import Choose from '../../../utils/choose/Choose.js'
 
-export class Chapter1ApartamentScene6Apartament extends Phaser.Scene {
+export class Chapter1ApartamentScene7Apartament extends Phaser.Scene {
     constructor() {
-        super({ key: 'Chapter1ApartamentScene6Apartament'})
+        super({ key: 'Chapter1ApartamentScene7Apartament'})
     }
 
     create(data) {
@@ -35,7 +35,7 @@ export class Chapter1ApartamentScene6Apartament extends Phaser.Scene {
         this.kitchen.create(902, 165, 'C1AS3_kitchen').setData('textKey', "enterToKitchen")
         this.furniture.create(235, 288, 'C1AS3_chair').setData('textKey', 'momInteract')
         this.furniture.create(235, 355, 'C1AS3_tv').setData('textKey', 'tvInteract')
-        this.exit.create(509, 81, 'C1AS3_exit').setData('textKey', 'exit')
+        this.exit.create(509, 81, 'C1AS3_exit').setData('textKey', 'end')
         this.player = new Player(this, 300, 200)
         
         if(data && data.spawnPoint === 'exit' && data.from == 'kitchen') {
@@ -51,54 +51,12 @@ export class Chapter1ApartamentScene6Apartament extends Phaser.Scene {
 
     
     const jsonText = this.cache.json.get('chapter1Scene1')
-    this.apartamentText = jsonText.apartament.scene1.apartament
+    this.apartamentText = jsonText.apartament.scene1.night.apartament
     this.isTextShowing = false
     this.nextText = null
     this.physics.add.collider(this.player.sprite, this.walls)
-    this.physics.add.collider(this.player.sprite, this.room, (player, collidedObj) => {
-        if(this.isTextShowing) return
-        this.isTextShowing = true
-        this.player.isFrozen = true
-        this.player.sprite.setVelocity(0)
-        let currentKey = collidedObj.getData('textKey')
-        const text = this.apartamentText[currentKey]
-        this.nextText = new Choose(this, text, () => {
-        this.isTextShowing = false
-        this.player.isFrozen = false
-        this.nextText = null
-            }, () => {
-                this.scene.start('Chapter1ApartamentScene6', { from: 'apartament', spawnPoint: 'exit'})
-            })
-    })
+    this.physics.add.collider(this.player.sprite, this.room)
     this.physics.add.collider(this.player.sprite, this.exit, (player, collidedObj) => {
-        if(this.isTextShowing) return
-        this.isTextShowing = true
-        this.player.isFrozen = true
-        let currentKey = collidedObj.getData('textKey')
-        const text = this.apartamentText[currentKey]
-        this.nextText = new NextText(this, jsonText.apartament.scene1.night.apartament.exit, () => {
-            this.isTextShowing = false
-            this.player.isFrozen = false
-            this.player.addMovements = true
-            this.nextText = null
-        }) 
-    })
-    this.physics.add.collider(this.player.sprite, this.kitchen, (player, collidedObj) => {
-        if(this.isTextShowing) return
-        this.isTextShowing = true
-        this.player.isFrozen = true
-        this.player.sprite.setVelocity(0)
-        let currentKey = collidedObj.getData('textKey')
-        const text = this.apartamentText[currentKey]
-        this.nextText = new Choose(this, text, () => {
-        this.isTextShowing = false
-        this.player.isFrozen = false
-        this.nextText = null
-            }, () => {
-                this.scene.start('Chapter1ApartamentScene6Kitchen')
-            })
-    })
-    this.physics.add.collider(this.player.sprite, this.furniture, (player, collidedObj) => {
         if(this.isTextShowing) return
         this.isTextShowing = true
         this.player.isFrozen = true
@@ -109,8 +67,11 @@ export class Chapter1ApartamentScene6Apartament extends Phaser.Scene {
             this.player.isFrozen = false
             this.player.addMovements = true
             this.nextText = null
+            this.scene.start('Chapter1End')
         }) 
     })
+    this.physics.add.collider(this.player.sprite, this.kitchen)
+    this.physics.add.collider(this.player.sprite, this.furniture)
 }
 
         

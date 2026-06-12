@@ -94,7 +94,7 @@
           "text": ["TV is a good rest time, isn't it?"],
           "info": "About TV"
         },
-         "exit": {
+        "exit": {
           "type": "choice",
           "speaker": "System",
           "question": "Go outside?",
@@ -190,18 +190,62 @@
         }
       },
       "night": {
+        "kitchenNight": {
+          "knife": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "Take a knife?",
+            "options": 
+            [
+              { 
+                "text": "Yes", 
+                "next_scene": "Chapter1ApartamentScene7",
+                "action": "take_knife" 
+              },
+              { 
+                "text": "No", 
+                "next_scene": null,
+                "action": "stay_in_kitchen" 
+              }
+            ]
+          },
+          "fridge": {
+            "type": "chat",
+            "speaker": "dev",
+            "text": ["There is no food", "only ketchup"],
+            "info": "About the fridge"
+          },
+          "exit": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "Go back?",
+            "options": 
+            [
+              { 
+                "text": "Yes", 
+                "next_scene": "Chapter1ApartamentScene3",
+                "action": "open_door" 
+              },
+              { 
+                "text": "No", 
+                "next_scene": null,
+                "action": "stay_in_kitchen" 
+              }
+            ]
+          }
+        },
         "room": {
           "firstLine": {
             "type": "chat",
             "speaker": "Player",
             "text": ["...", "What's the fuck", "!!!!", "He saw me!"],
-            "info": "First line in the game"
+            "info": "First line in the night room"
           },
           "secondLine": {
             "type": "chat",
             "speaker": "Player",
             "text": ["*knock* *knock*", "!!!", "I need to take knife"],
-            "info": "First line in the game"
+            "info": "Second line in the night room"
           },
           "sleepAndNothing": {
             "type": "choice",
@@ -212,7 +256,7 @@
               { 
                 "text": "Yes", 
                 "next_scene": "Chapter1End",
-                "action": "go_to_apart" 
+                "action": "sleep" 
               },
               { 
                 "text": "No", 
@@ -230,7 +274,25 @@
               { 
                 "text": "Yes", 
                 "next_scene": "Chapter1ApartamentScene5Window",
-                "action": "go_to_apart" 
+                "action": "look_window" 
+              },
+              { 
+                "text": "No", 
+                "next_scene": null,
+                "action": "stay_in_room" 
+              }
+            ]
+          },
+          "bedInteract": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "take a rest?",
+            "options": 
+            [
+              { 
+                "text": "Yes", 
+                "next_scene": "Chapter1End",
+                "action": "sleep" 
               },
               { 
                 "text": "No", 
@@ -240,35 +302,15 @@
             ]
           },
           "roomExit": {
-          "type": "choice",
-          "speaker": "System",
-          "question": "Go to apartament?",
-          "options": 
-          [
-            { 
-              "text": "Yes", 
-              "next_scene": "Chapter1ApartamentScene3",
-              "action": "go_to_apart" 
-            },
-            { 
-              "text": "No", 
-              "next_scene": null,
-              "action": "stay_in_room" 
-            }
-          ]
-          }
-        },
-        "apartament": {
-          "exit": {
-          "type": "choice",
-          "speaker": "System",
-          "question": "Go outside?",
+            "type": "choice",
+            "speaker": "System",
+            "question": "Go to apartament?",
             "options": 
             [
               { 
                 "text": "Yes", 
-                "next_scene": "Chapter1ApartamentScene2",
-                "action": "open_door" 
+                "next_scene": "Chapter1ApartamentScene3",
+                "action": "go_to_apart" 
               },
               { 
                 "text": "No", 
@@ -276,88 +318,76 @@
                 "action": "stay_in_room" 
               }
             ]
+          }
+        },
+        "apartament": {
+          "end": {
+            "type": "chat",
+            "speaker": "Player",
+            "text": ["Take that!"],
+            "info": "First line in the night room"
+          },
+          "exit": {
+            "type": "chat",
+            "speaker": "Player",
+            "text": ["You need a knife"],
+            "info": "Reminder to get knife"
           },
           "enterToRoom": {
-          "type": "choice",
-          "speaker": "System",
-          "question": "This is your room. Go in?",
-          "options": 
-          [
-            { 
-              "text": "Yes", 
-              "next_scene": "Chapter1ApartamentScene4",
-              "action": "enter_room" 
-            },
-            { 
-              "text": "No", 
-              "next_scene": null,
-              "action": "stay_in_house" 
-            }
-          ]
-        },
-        "enterToKitchen": {
-          "type": "choice",
-          "speaker": "System",
-          "question": "This is kitchen. Go in?",
-          "options":
-          [
-            { 
-              "text": "Yes", 
-              "next_scene": "Chapter1ApartamentSceneKitchen",
-              "action": "enter_kitchen" 
-            },
-            { 
-              "text": "No", 
-              "next_scene": null,
-              "action": "stay_in_house" 
-            }
-          ]
-        },
-        "stranger": {
-          "type": "choice",
-          "speaker": "System",
-          "question": "Look who is there?",
-          "options":
-          [
-            { 
-              "text": "Yes", 
-              "next_scene": "Chapter1ApartamentScene6",
-              "action": "enter_kitchen" 
-            },
-            { 
-              "text": "No", 
-              "next_scene": null,
-              "action": "stay_in_house" 
-            }
-          ]
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is your room. Go in?",
+            "options": 
+            [
+              { 
+                "text": "Yes", 
+                "next_scene": "Chapter1ApartamentScene4",
+                "action": "enter_room" 
+              },
+              { 
+                "text": "No", 
+                "next_scene": null,
+                "action": "stay_in_house" 
+              }
+            ]
+          },
+          "enterToKitchen": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is kitchen. Go in?",
+            "options":
+            [
+              { 
+                "text": "Yes", 
+                "next_scene": "Chapter1ApartamentSceneKitchen",
+                "action": "enter_kitchen" 
+              },
+              { 
+                "text": "No", 
+                "next_scene": null,
+                "action": "stay_in_house" 
+              }
+            ]
+          },
+          "stranger": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "Look who is there?",
+            "options":
+            [
+              { 
+                "text": "Yes", 
+                "next_scene": "Chapter1ApartamentScene6",
+                "action": "look_stranger" 
+              },
+              { 
+                "text": "No", 
+                "next_scene": null,
+                "action": "stay_in_house" 
+              }
+            ]
+          }
         }
-      },
-      "kitchen": {
-        "exit": {
-          "type": "choice",
-          "speaker": "System",
-          "question": "Go back?",
-          "options":
-          [
-            { 
-              "text": "Yes", 
-              "next_scene": "Chapter1ApartamentScene3",
-              "action": "open_door" 
-            },
-            { 
-              "text": "No", 
-              "next_scene": null,
-              "action": "stay_in_kitchen" 
-            }
-          ]
-        },
-        "fridge": {
-          "type": "chat",
-          "speaker": "dev",
-          "text": ["There is no food", "only ketchup"],
-          "info": "About the fridge"
-        }
-      }
       }
     }
   }
