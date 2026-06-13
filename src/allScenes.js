@@ -14,6 +14,8 @@ import { Chapter1ApartamentScene6Kitchen } from './scenes/Chapter1/Apartament/sc
 import { Chapter1End } from './scenes/Chapter1/Apartament/scene8.js'
 import { Chapter1ApartamentScene7Apartament } from './scenes/Chapter1/Apartament/scene7Apartament.js'
 
+/* chapter2 */
+
 
 
 export const allScenes = [
@@ -30,4 +32,6 @@ export const allScenes = [
     Chapter1ApartamentScene6Kitchen,
     Chapter1End,
     Chapter1ApartamentScene7Apartament
+
+    /* chapter2 */
 ]
