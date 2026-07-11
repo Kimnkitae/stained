@@ -1,0 +1,39 @@
+{
+    "street": {
+        "firstLine": {
+            "type": "chat",
+            "speaker": "dev",
+            "text": ["(You got out of your house)", "*wailing* *wailing*"]
+        },
+        "firstLine2": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["I need to hide somewhere", "or they will arrest me"]
+        },
+        "enterToBrokenHouse": {
+            "type": "choose",
+            "speaker": "System",
+            "question": "Go inside?",
+            "options":
+            [
+                {
+                    "text": "Yes",
+                    "next_scene": "Chapter2BHScene1",
+                    "action": "enter_in_broken_house"
+                },
+                {
+                    "text": "No",
+                    "next_scene": null,
+                    "action": "stay_out_of_the_street"
+                }
+            ]
+        }
+    },
+    "brokenHouse": {
+        "firstLine": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["..", "Looks disgusting"]
+        }
+    }
+}

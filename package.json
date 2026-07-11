@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "phaser": "^4.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
