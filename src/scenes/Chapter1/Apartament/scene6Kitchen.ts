@@ -1,10 +1,11 @@
-import Player from '../../../utils/player/player.js'
-import NextText from '../../../utils/texts/nextText.js'
-import Choose from '../../../utils/choose/Choose.js'
+import Phaser from 'phaser'
+import Player from '../../../utils/player/player.ts'
+import NextText from '../../../utils/texts/nextText.ts'
+import Choose from '../../../utils/choose/Choose.ts'
 
-export class Chapter1ApartamentScene7 extends Phaser.Scene {
+export class Chapter1ApartamentScene6Kitchen extends Phaser.Scene {
     constructor() {
-        super({ key: 'Chapter1ApartamentScene7'})
+        super({ key: 'Chapter1ApartamentScene6Kitchen'})
          
     }
 
@@ -18,8 +19,6 @@ export class Chapter1ApartamentScene7 extends Phaser.Scene {
           0.5              
         )
         overlay.setDepth(100)
-        this.interactSound = this.sound.add('interact')
-        
         this.add.image(300, 250, 'kitchen')
         this.add.image(300, 600, 'placeholder')
         this.walls = this.physics.add.staticGroup()
@@ -34,8 +33,9 @@ export class Chapter1ApartamentScene7 extends Phaser.Scene {
         this.furniture.create(247, 97, 'kitchen-furniture').setData('textKey', 'knife')
         this.furniture.create(401, 97, 'kitchen-fridge').setData('textKey', 'fridge')
         this.exit.create(112, 310, 'kitchen-door').setData('textKey', 'exit')
+        this.interactSound = this.sound.add('interact')
          
-        this.player = new Player(this, 250, 170)
+        this.player = new Player(this, 150, 300)
         const jsonText = this.cache.json.get('chapter1Scene1')
         this.kitchenText = jsonText.apartament.scene1.night.kitchenNight
         this.isTextShowing = false
@@ -55,14 +55,33 @@ export class Chapter1ApartamentScene7 extends Phaser.Scene {
             this.player.isFrozen = false
             this.nextText = null
                 }, () => {
-                    this.scene.start('Chapter1ApartamentScene7Apartament', { spawnPoint: 'exit', from: 'kitchen' })
+                    this.scene.start('Chapter1ApartamentScene6Apartament', { spawnPoint: 'exit', from: 'kitchen' })
+
                 })
         })
 
         this.physics.add.collider(this.player.sprite, this.fridge)
 
-        this.physics.add.collider(this.player.sprite, this.furniture)
+        this.physics.add.collider(this.player.sprite, this.furniture, (player, collidedObj) => {
+             this.interactSound.play()
+            if(this.isTextShowing) return
+                this.isTextShowing = true
+                this.player.isFrozen = true
+                this.player.sprite.setVelocity(0)
+                let currentKey = collidedObj.getData('textKey')
+                const text = this.kitchenText[currentKey]
+                this.nextText = new Choose(this, text, () => {
+                this.isTextShowing = false
+                this.player.isFrozen = false
+                this.nextText = null
+            }, () => {
+                this.scene.start('Chapter1ApartamentScene7')
+            })
+        })
+
+        
     }
+
     update() {
         if (this.player) this.player.update()
         if (this.isTextShowing && this.player && this.player.sprite.body.touching.none) {

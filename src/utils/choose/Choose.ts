@@ -1,3 +1,5 @@
+import Phaser from 'phaser'
+
 export default class Choose {
     constructor(scene, chooseKey, endAll, toDo) {
         this.scene = scene

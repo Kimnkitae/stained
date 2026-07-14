@@ -1,3 +1,4 @@
+import Phaser from 'phaser'
 import { allScenes } from './allScenes.js'
 import  Bootloader  from './bootloader.js'
 import MusicScene from './utils/music/MusicScene.js'

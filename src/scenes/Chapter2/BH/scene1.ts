@@ -1,6 +1,8 @@
-export class BrokenHouseScene2 extends Phaser.Scene {
+import Phaser from 'phaser'
+
+export class BrokenHouseScene1 extends Phaser.Scene {
     constructor() {
-        super({key: 'BrokenHouseScene2'})
+        super({key: 'BrokenHouseScene1'})
     }
 
     create() {

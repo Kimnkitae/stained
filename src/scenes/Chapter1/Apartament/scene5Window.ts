@@ -1,4 +1,5 @@
-import NextText from '../../../utils/texts/nextText.js'
+import Phaser from 'phaser'
+import NextText from '../../../utils/texts/nextText.ts'
 
 export class Chapter1ApartamentScene5Window extends Phaser.Scene {
     constructor() {

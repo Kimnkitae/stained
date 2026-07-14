@@ -1,3 +1,4 @@
+import Phaser from 'phaser'
 export default class NextText {
     constructor(scene, dialogueKey, endAll) {
         this.scene = scene;

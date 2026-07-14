@@ -1,4 +1,4 @@
-import BaseStreetScene from './street.js'
+import BaseStreetScene from './street.ts'
 
 export class Chapter1ApartamentScene2 extends BaseStreetScene {
     constructor() {

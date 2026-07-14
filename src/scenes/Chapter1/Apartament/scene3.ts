@@ -1,4 +1,4 @@
-import BaseApartamentScene from './apartament.js'
+import BaseApartamentScene from './apartament.ts'
 
 export class Chapter1ApartamentScene3 extends BaseApartamentScene {
     constructor() {

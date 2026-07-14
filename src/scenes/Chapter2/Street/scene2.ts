@@ -1,28 +1,24 @@
-import Player from '../../../utils/player/player.js'
-import Choose from '../../../utils/choose/Choose.js'
-
-export class Chapter2StreetScene4 extends Phaser.Scene {
+import Phaser from 'phaser'
+import Player from '../../../utils/player/player.ts'
+import NextText from '../../../utils/texts/nextText.ts'
+export class Chapter2StreetScene2 extends Phaser.Scene {
     constructor() {
-        super({ key: 'Chapter2StreetScene4'})
+        super({ key: 'Chapter2StreetScene2'})
     }
 
     create() {
        
-        
-        this.add.image(300, 300, 'street2BH')
+        this.add.image(300, 300, 'street2')
 
         this.walls = this.physics.add.staticGroup()
-        this.building = this.physics.add.staticGroup()
         this.nextScene = this.physics.add.staticGroup()
 
         this.walls.create(73, 300, 'street2LeftWall')
         this.walls.create(300, 213, 'street2TopWall')
         this.walls.create(300, 401, 'street2BottomWall')
-        this.building.create(400, 223, 'street2BHBH').setData('textKey', 'enterToBrokenHouse')
         this.nextStreet = this.nextScene.create(527, 300, 'street2LeftWall')
         this.add.image(300, 600, 'placeholder')
         this.initPlayer(100, 300)
-        this.interactSound = this.sound.add('interact')
         const overlay = this.add.rectangle(
           this.scale.width / 2,
           this.scale.height / 2,
@@ -37,29 +33,25 @@ export class Chapter2StreetScene4 extends Phaser.Scene {
     initPlayer(x, y) {
                 this.player = new Player(this, x, y)
                 const jsonText = this.cache.json.get('chapter2')
-                this.streetText = jsonText.street
+                this.streetText = jsonText.street.firstLine2
                 this.isTextShowing = false
                 this.nextText = null
                 this.physics.add.collider(this.player.sprite, this.walls)
-               this.physics.add.collider(this.player.sprite, this.building, (player, collidedObj) => {
-                    this.interactSound.play()
+        
+               
+        
+                this.physics.add.collider(this.player.sprite, this.nextStreet, (player, collidedObj) => {
                     if(this.isTextShowing) return
                     this.isTextShowing = true
                     this.player.isFrozen = true
                     this.player.sprite.setVelocity(0)
-                    let currentKey = collidedObj.getData('textKey')
-                    const text = this.streetText[currentKey]
-                    this.nextText = new Choose(this, text, () => {
+                    const text = this.streetText
+                    this.nextText = new NextText(this, text, () => {
                     this.isTextShowing = false
                     this.player.isFrozen = false
                     this.nextText = null
-                        }, () => {
-                            this.scene.start('Chapter2BHScene1')
-                        })
-                })
-        
-                this.physics.add.collider(this.player.sprite, this.nextStreet, (player, collidedObj) => {
-                    
+                    this.scene.start('Chapter2StreetScene3')
+                    })
                 })
             }
         

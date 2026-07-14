@@ -1,4 +1,4 @@
-import BaseRoomScene from './room.js'
+import BaseRoomScene from './room.ts'
 
 export class Chapter1ApartamentScene4 extends BaseRoomScene {
     constructor() {

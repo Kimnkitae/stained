@@ -1,4 +1,4 @@
-import BaseKitchenScene  from './kitchen.js'
+import BaseKitchenScene  from './kitchen.ts'
 
 export class Chapter1ApartamentScene4Kitchen extends BaseKitchenScene {
     constructor() {

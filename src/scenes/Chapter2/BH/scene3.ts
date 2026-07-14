@@ -1,3 +1,4 @@
+import Phaser from 'phaser'
 export class BrokenHouseScene3 extends Phaser.Scene {
     constructor() {
         super({key: 'BrokenHouseScene3'})

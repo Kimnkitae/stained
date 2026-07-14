@@ -1,3 +1,5 @@
+import Phaser from 'phaser'
+
 export default class MusicScene extends Phaser.Scene {
     constructor() {
         super({ key: 'MusicScene', active: true })

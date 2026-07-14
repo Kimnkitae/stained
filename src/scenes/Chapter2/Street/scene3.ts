@@ -1,8 +1,9 @@
-import Player from '../../../utils/player/player.js'
-import NextText from '../../../utils/texts/nextText.js'
-export class Chapter2StreetScene1 extends Phaser.Scene {
+import Phaser from 'phaser'
+import Player from '../../../utils/player/player.ts'
+import NextText from '../../../utils/texts/nextText.ts'
+export class Chapter2StreetScene3 extends Phaser.Scene {
     constructor() {
-        super({ key: 'Chapter2StreetScene1'})
+        super({ key: 'Chapter2StreetScene3'})
     }
 
     create() {
@@ -18,7 +19,6 @@ export class Chapter2StreetScene1 extends Phaser.Scene {
         this.nextStreet = this.nextScene.create(527, 300, 'street2LeftWall')
         this.add.image(300, 600, 'placeholder')
         this.initPlayer(100, 300)
-
         const overlay = this.add.rectangle(
           this.scale.width / 2,
           this.scale.height / 2,
@@ -33,7 +33,6 @@ export class Chapter2StreetScene1 extends Phaser.Scene {
     initPlayer(x, y) {
                 this.player = new Player(this, x, y)
                 const jsonText = this.cache.json.get('chapter2')
-                this.streetText = jsonText.street.firstLine
                 this.isTextShowing = false
                 this.nextText = null
                 this.physics.add.collider(this.player.sprite, this.walls)
@@ -46,13 +45,9 @@ export class Chapter2StreetScene1 extends Phaser.Scene {
                     this.player.isFrozen = true
                     this.player.sprite.setVelocity(0)
                     const text = this.streetText
-                    this.nextText = new NextText(this, text, () => {
-                    this.isTextShowing = false
-                    this.player.isFrozen = false
-                    this.nextText = null
-                    this.scene.start('Chapter2StreetScene2')
                     
-                    })
+                    this.scene.start('Chapter2StreetScene4')
+                    
                 })
             }
         

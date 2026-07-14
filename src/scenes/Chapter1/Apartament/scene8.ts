@@ -1,3 +1,4 @@
+import Phaser from 'phaser'
 export class Chapter1End extends Phaser.Scene {
     constructor() {
         super({ key: 'Chapter1End'})

@@ -1,6 +1,7 @@
-import Player from '../../../utils/player/player.js'
-import NextText from '../../../utils/texts/nextText.js'
-import Choose from '../../../utils/choose/Choose.js'
+import Phaser from 'phaser'
+import Player from '../../../utils/player/player.ts'
+import NextText from '../../../utils/texts/nextText.ts'
+import Choose from '../../../utils/choose/Choose.ts'
 
 export default class BaseKitchenScene extends Phaser.Scene {
     constructor(config) {

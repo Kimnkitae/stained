@@ -4,8 +4,8 @@ import MusicScene from './utils/music/MusicScene.js'
 
 /* Chapter 1 */
 
-import { Chapter1ApartamentScene1 } from './scenes/Chapter1/Apartament/scene1.js'
-import { Chapter1ApartamentScene2 } from './scenes/Chapter1/Apartament/scene2.js'
+import { Chapter1ApartamentScene1 } from './scenes/Chapter1/Apartament/scene1.ts'
+import { Chapter1ApartamentScene2 } from './scenes/Chapter1/Apartament/scene2.ts'
 import { Chapter1ApartamentScene3 } from './scenes/Chapter1/Apartament/scene3.js'
 import { Chapter1ApartamentScene4 } from './scenes/Chapter1/Apartament/scene4.js'
 import { Chapter1ApartamentScene5 } from './scenes/Chapter1/Apartament/scene5.js'
