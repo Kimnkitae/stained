@@ -1,8 +1,6 @@
 import Phaser from 'phaser'
-import { allScenes } from './allScenes.js'
-import  Bootloader  from './bootloader.js'
-import MusicScene from './utils/music/MusicScene.js'
-
+import bootloader from './bootloader.ts'
+import allScenes from './allScenes.ts'
 
 const config = {
     type: Phaser.AUTO,
@@ -11,7 +9,6 @@ const config = {
     pixelArt: true,
     render: {
         antialias: true,
-        roundPixels: true,
         roundPixels: true
     },
     parent: 'game-container',
@@ -21,7 +18,7 @@ const config = {
         default: 'arcade', 
         arcade: {
             gravity: { y: 0 },
-            debug: true  // видеть границы объектов    
+            debug: false   
         }
     },
     fps: {
@@ -29,20 +26,16 @@ const config = {
         showChart: true,
     },
     backgroundColor: '#000000',
-    scene: [Bootloader,
-        ...allScenes],
+    scene: [bootloader, ...allScenes],
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
     callbacks: {
-        postBoot: (game) => {
+        postBoot: (game: Phaser.Game) => {
             game.registry.set('karma', 0);
         }
     }
 }
 
-
-
-new Phaser.Game(config)
-            
+new Phaser.Game()       
