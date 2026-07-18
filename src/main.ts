@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 import bootloader from './bootloader.ts'
 import allScenes from './allScenes.ts'
 
-const config = {
+const config: Object = {
     type: Phaser.AUTO,
     title: 'stained',
     description: '2D psyhological horror',
@@ -30,12 +30,7 @@ const config = {
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
-    },
-    callbacks: {
-        postBoot: (game: Phaser.Game) => {
-            game.registry.set('karma', 0);
-        }
     }
 }
 
-new Phaser.Game()       
+new Phaser.Game(config)       
