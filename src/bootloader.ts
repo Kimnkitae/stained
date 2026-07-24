@@ -8,7 +8,13 @@ export default class bootloader extends Phaser.Scene {
     }
 
     preload() {
-
+        /* Player */
+        this.load.spritesheet('player', 'assets/player/player.png',
+            { frameWidth: 46,
+              frameHeight: 64, 
+            }
+        )
+        
     }
 
 

@@ -3,7 +3,8 @@ import Phaser from 'phaser'
 export default class Player {
     cursors!: Phaser.Types.Input.Keyboard.CursorKeys
     sprite!: Phaser.Physics.Arcade.Sprite
-
+    isFrozen: boolean = false
+    moving: boolean = false
     constructor(public scene: Phaser.Scene) {
         
     }
@@ -11,11 +12,11 @@ export default class Player {
     create(x: number, y: number) {
         this.cursors = this.scene.input.keyboard!.createCursorKeys()
         this.sprite = this.scene.physics.add.sprite(x, y, 'player')
-
+        this.moving = this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown
         this.addAnimations()
     }
 
-    private addAnimations() {
+    addAnimations() {
         this.sprite.anims.create({
             key: 'idle',
             frames: this.sprite.anims.generateFrameNumbers('player', { start: 0, end: 1 }),
@@ -49,7 +50,28 @@ export default class Player {
     }
 
     update() {
-
+        if(this.isFrozen) {
+            this.sprite.setVelocity(0)
+            this.sprite.anims.play('idle', true)
+            return
+        }
+        if(this.moving) {
+            if(this.cursors.left.isDown) {
+                this.sprite.setVelocityX(-100)
+                this.sprite.anims.play('left', true)
+            } else if(this.cursors.right.isDown) {
+                this.sprite.setVelocityX(100)
+                this.sprite.anims.play('right', true)
+            } else if(this.cursors.up.isDown) {
+                this.sprite.setVelocityY(-100)
+                this.sprite.anims.play('top', true)
+            } else if(this.cursors.down.isDown) {
+                this.sprite.setVelocityY(100)
+                this.sprite.anims.play('down', true)
+            }
+        } else {
+            this.sprite.setVelocity(0)
+            this.sprite.anims.play('idle', true)
+        }
     }
-
 }
