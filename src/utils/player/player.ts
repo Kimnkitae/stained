@@ -12,7 +12,6 @@ export default class Player {
     create(x: number, y: number) {
         this.cursors = this.scene.input.keyboard!.createCursorKeys()
         this.sprite = this.scene.physics.add.sprite(x, y, 'player')
-        this.moving = this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown
         this.addAnimations()
     }
 
@@ -55,6 +54,9 @@ export default class Player {
             this.sprite.anims.play('idle', true)
             return
         }
+
+        this.moving = this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown
+
         if(this.moving) {
             if(this.cursors.left.isDown) {
                 this.sprite.setVelocityX(-100)
