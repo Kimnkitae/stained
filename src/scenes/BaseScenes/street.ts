@@ -4,7 +4,7 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
     spacebar!: Phaser.Input.Keyboard.Key
     house!: Phaser.Physics.Arcade.StaticGroup
     walls!: Phaser.Physics.Arcade.StaticGroup
-    chair!: Phaser.Physics.Arcade.StaticGroup
+    bench!: Phaser.Physics.Arcade.StaticGroup
     trees!: Phaser.Physics.Arcade.StaticGroup
 
 
@@ -18,9 +18,16 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
 
         this.house = this.physics.add.staticGroup()
         this.walls = this.physics.add.staticGroup()
-        this.chair = this.physics.add.staticGroup()
+        this.bench = this.physics.add.staticGroup()
         this.trees = this.physics.add.staticGroup()
 
-        this.walls.create(0, 0, 'leftWall').setOrigin(0, 0).refreshBody()
+        this.walls.create(0, 0, 'chapter1streetLeftWall')
+        this.walls.create(0, 0, 'chapter1streetTopWall')
+        this.walls.create(0, 0, 'chapter1streetRightWall')
+        this.walls.create(0, 0, 'chapter1streetBottomWall')
+
+        this.trees.create(0, 0, 'chapter1streetTrees')
+        this.house.create(0, 0, 'chapter1streetHouse')
+        this.bench.create(0, 0, 'chapter1streetBench')
     }
 }

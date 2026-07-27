@@ -21,8 +21,10 @@ export default class bootloader extends Phaser.Scene {
         this.load.image('chapter1street', 'Chapter1/assets/street/street.png')
         this.load.image('chapter1streetLeftWall', 'Chapter1/assets/street/leftWall.png')
         this.load.image('chapter1streetTopWall', 'Chapter1/assets/street/topWall.png')
+        this.load.image('chapter1streetBottomWall', 'Chapter1/assets/street/bottomWall.png')
+        this.load.image('chapter1streetRightWall', 'Chapter1/assets/street/rightWall.png')
         this.load.image('chapter1streetTrees', 'Chapter1/assets/street/trees.png')
-        this.load.image('chapter1streetChair', 'Chapter1/assets/street/chair.png')
+        this.load.image('chapter1streetBench', 'Chapter1/assets/street/bench.png')
         this.load.image('chapter1streetHouse', 'Chapter1/assets/street/house.png')
 
         this.load.image('chapter1apartament', 'Chapter1/assets/apartament/apartament.png')
@@ -50,6 +52,19 @@ export default class bootloader extends Phaser.Scene {
         this.load.image('chapter1roomWindows', 'Chapter1/assets/room/windows.png')
 
         this.load.image('chapter1bathroom', 'Chapter1/assets/bathroom/bathroom.png')
+        this.load.image('chapter1bathroomLeftWall', 'Chapter1/assets/bathroom/leftWall.png')
+        this.load.image('chapter1bathroomTopWall', 'Chapter1/assets/bathroom/topWall.png')
+        this.load.image('chapter1bathroomRightWall', 'Chapter1/assets/bathroom/rightWall.png')
+        this.load.image('chapter1bathroomBottomWall', 'Chapter1/assets/bathroom/bottomWall.png')
+        this.load.image('chapter1bathroomDoorToApartment', 'Chapter1/assets/bathroom/doorToApartment.png')
+        this.load.image('chapter1bathroomVanityTable', 'Chapter1/assets/bathroom/vanityTable.png')
+        this.load.image('chapter1bathroomToilet', 'Chapter1/assets/bathroom/toilet.png')
+        this.load.image('chapter1bathroomShower', 'Chapter1/assets/bathroom/shower.png')
+        this.load.image('chapter1bathroomWashingMachine', 'Chapter1/assets/bathroom/washing-machine.png')
+
+        /* Chapter2 */
+
+        
     }
 
 

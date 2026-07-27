@@ -1,0 +1,35 @@
+{
+    "street": {
+        "firstLine": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["...", "I need to go home"],
+            "info": "First line in the game"
+        },
+        "trees": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["This is looks disgusting", "What if I burn it down?"],
+            "info": "About the trees"
+        },
+        "bench": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["This is looks disgusting", "What if I burn it down?"],
+            "info": "About the chair"
+        }
+    },
+    "apartament": {
+
+    },
+    "kitchen": {
+
+    },
+    "room": {
+
+    },
+    "bathroom": {
+
+    }
+
+}
