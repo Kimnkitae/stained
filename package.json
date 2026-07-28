@@ -3,6 +3,28 @@
     "phaser": "^4.2.1"
   },
   "devDependencies": {
-    "typescript": "^7.0.2"
-  }
+    "typescript": "^5.9.3",
+    "vite": "^8.1.4"
+  },
+  "name": "stained",
+  "version": "1.0.0",
+  "description": "Stained: Psychological Horror Visual Novel\r Stained — это атмосферный психологический хоррор, разработанный на движке Phaser.js. Проект исследует темы изоляции и внутреннего напряжения через интерактивное повествование в формате визуальной новеллы.",
+  "main": "phaser.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KimnKitae/stained.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KimnKitae/stained/issues"
+  },
+  "homepage": "https://github.com/KimnKitae/stained#readme"
 }
