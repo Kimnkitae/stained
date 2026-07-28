@@ -17,19 +17,393 @@
             "speaker": "player",
             "text": ["This is looks disgusting", "What if I burn it down?"],
             "info": "About the chair"
+        },
+        "house": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the house, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "apartament"
+                },
+                {
+                    "text": "No",
+                    "next": "street"
+                }
+            ]
         }
     },
+
     "apartament": {
-
+        "doorToRoom": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the door to the room, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "room"
+                },
+                {
+                    "text": "No",
+                    "next": "apartament"
+                }
+            ]
+        },
+        "doorToKitchen": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the door to the kitchen, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "kitchen"
+                },
+                {
+                    "text": "No",
+                    "next": "apartament"
+                }
+            ]
+        },
+        "doorToBathroom": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the door to the bathroom, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "bathroom"
+                },
+                {
+                    "text": "No",
+                    "next": "apartament"
+                }
+            ]
+        },
+        "doorToStreet": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the door to the street, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "street"
+                },
+                {
+                    "text": "No",
+                    "next": "apartament"
+                }
+            ]
+        },
+        "TV": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["Doesn't work"],
+            "info": "About the TV"
+        }
     },
+
     "kitchen": {
-
+        "doorToApartment": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the door to the apartment, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "apartament"
+                },
+                {
+                    "text": "No",
+                    "next": "kitchen"
+                }
+            ]
+        },
+        "fridge": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["Empty"],
+            "info": "About the fridge"
+        }
     },
+
     "room": {
-
+        "doorToApartment": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the door to the apartment, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "apartament"
+                },
+                {
+                    "text": "No",
+                    "next": "room"
+                }
+            ]
+        },
+        "window": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["I can see the street from here"],
+            "info": "About the window"
+        },
+        "bed": {
+          "type": "choice",
+          "speaker": "System",
+          "question": "Take a rest?",
+          "options": 
+          [
+            { 
+              "text": "Yes", 
+              "next": "roomNight"
+              
+            },
+            { 
+              "text": "No", 
+              "next": "room"
+            }
+          ]
+        }
     },
-    "bathroom": {
 
+    "bathroom": {
+        "doorToApartment": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the door to the apartment, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "apartament"
+                },
+                {
+                    "text": "No",
+                    "next": "bathroom"
+                }
+            ]
+        },
+        "washingMachine": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["I dont have any clothes to wash"],
+            "info": "About the washing machine"
+        },
+        "shower": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["I'm not going to take a shower right now"],
+            "info": "About the shower"
+        },
+        "toilet": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["I don't need to use the toilet right now"],
+            "info": "About the toilet"
+        },
+        "vanityTable": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the mirror, do you want to look in it?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "mirror"
+                },
+                {
+                    "text": "No",
+                    "next": "bathroom"
+                }
+            ],
+            "info": "About the vanity table"
+        }
+    },
+    "night": {
+        "room": {
+            "bed": {
+                "type": "chat",
+                "speaker": "player",
+                "text": ["I don't want to sleep right now"],
+                "info": "About the bed"
+            },
+            "windows": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "Look at window?",
+                "options": 
+                [
+                    { 
+                        "text": "Yes", 
+                        "next": "windows"
+                    },
+                    { 
+                    "text": "No", 
+                    "next": "roomNight"
+                    }
+                ]
+            },
+            "doorToApartment": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "This is the door to the apartment, do you want to enter?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "apartamentNight"
+                    },
+                    {
+                        "text": "No",
+                        "next": "roomNight"
+                    }
+                ]
+            }
+        },
+    
+        "apartament": {
+            "doorToRoom": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "This is the door to the room, do you want to enter?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "room"
+                    },
+                    {
+                        "text": "No",
+                        "next": "apartament"
+                    }
+                ]
+            },
+            "doorToKitchen": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "This is the door to the kitchen, do you want to enter?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "kitchen"
+                    },
+                    {
+                        "text": "No",
+                        "next": "apartament"
+                    }
+                ]
+            },
+            "doorToBathroom": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "This is the door to the bathroom, do you want to enter?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "bathroom"
+                    },
+                    {
+                        "text": "No",
+                        "next": "apartament"
+                    }
+                ]
+            },
+            "doorToStreet": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "This is the door to the street, do you want to enter?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "street"
+                    },
+                    {
+                        "text": "No",
+                        "next": "apartament"
+                    }
+                ]
+            },
+            "TV": {
+                "type": "chat",
+                "speaker": "player",
+                "text": ["Doesn't work"],
+                "info": "About the TV"
+            }
+        },
+        "kitchen": {
+            "doorToApartment": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "This is the door to the apartment, do you want to enter?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "apartament"
+                    },
+                    {
+                        "text": "No",
+                        "next": "kitchen"
+                    }
+                ]
+            },
+            "fridge": {
+                "type": "chat",
+                "speaker": "player",
+                "text": ["Empty"],
+                "info": "About the fridge"
+            }
+        },
+        "bathroom": {
+            "doorToApartment": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "This is the door to the apartment, do you want to enter?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "apartament"
+                    },
+                    {
+                        "text": "No",
+                        "next": "bathroom"
+                    }
+                ]
+            },
+            "washingMachine": {
+                "type": "chat",
+                "speaker": "player",
+                "text": ["I dont have any clothes to wash"],
+                "info": "About the washing machine"
+            },
+            "shower": {
+                "type": "chat",
+                "speaker": "player",
+                "text": ["I'm not going to take a shower right now"],
+                "info": "About the shower"
+            },
+            "toilet": {
+                "type": "chat",
+                "speaker": "player",
+                "text": ["I don't need to use the toilet right now"],
+                "info": "About the toilet"
+            },
+            "vanityTable": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "This is the mirror, do you want to look in it?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "mirror"
+                    },
+                    {
+                        "text": "No",
+                        "next": "bathroom"
+                    }
+                ],
+                "info": "About the vanity table"
+            }
+        }
+        
     }
 
 }
