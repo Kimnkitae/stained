@@ -1,0 +1,105 @@
+{
+    
+    "street": {
+        "firstLine": {
+            "type": "chat",
+            "speaker": "player",
+            "text": [
+                "I'm finally back...",
+                "No one followed me.",
+                "I knew this place would keep me safe."
+            ]
+        },
+        "house": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "Enter the house?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "home"
+                },
+                {
+                    "text": "No",
+                    "next": "street"
+                }
+            ]
+        }
+    },
+
+    "apartament": {
+        "firstLine": {
+            "type": "chat",
+            "speaker": "player",
+            "text": [
+                "Everything is just like I remember.",
+                "Nothing changed.",
+                "Maybe everything will finally be okay."
+            ]
+        },
+
+        "bed": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "Lie down?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "knock"
+                },
+                {
+                    "text": "No",
+                    "next": "home"
+                }
+            ]
+        }
+    },
+
+    "knock": {
+        "type": "chat",
+        "speaker": "System",
+        "text": [
+            "*Knock.*",
+            "...",
+            "*Knock. Knock.*"
+        ]
+    },
+
+    "door": {
+        "type": "choice",
+        "speaker": "System",
+        "question": "Someone is at the door.",
+        "options": [
+            {
+                "text": "Open",
+                "next": "ending"
+            },
+            {
+                "text": "Ignore",
+                "next": "knockAgain"
+            }
+        ]
+    },
+
+    "knockAgain": {
+        "type": "chat",
+        "speaker": "System",
+        "text": [
+            "BANG!",
+            "BANG!",
+            "BANG!"
+        ]
+    },
+
+    "ending": {
+        "type": "chat",
+        "speaker": "player",
+        "text": [
+            "...",
+            "Who's there?",
+            "...",
+            "No..."
+        ]
+    }
+
+}
