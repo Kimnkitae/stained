@@ -308,25 +308,32 @@
                 ]
             },
             "doorToStreet": {
+                "type": "chat",
+                "speaker": "player",
+                "text": ["You need a knife to defend yourself"],
+                "info": "About the TV"
+            },
+
+            "TV": {
+                "type": "chat",
+                "speaker": "player",
+                "text": ["Doesn't work"],
+                "info": "About the TV"
+            },
+            "killYourself": {
                 "type": "choice",
                 "speaker": "System",
-                "question": "This is the door to the street, do you want to enter?",
+                "question": "Stab him?",
                 "options": [
                     {
                         "text": "Yes",
-                        "next": "street"
+                        "next": "chapter2"
                     },
                     {
                         "text": "No",
                         "next": "apartament"
                     }
                 ]
-            },
-            "TV": {
-                "type": "chat",
-                "speaker": "player",
-                "text": ["Doesn't work"],
-                "info": "About the TV"
             }
         },
         "kitchen": {
@@ -350,6 +357,21 @@
                 "speaker": "player",
                 "text": ["Empty"],
                 "info": "About the fridge"
+            },
+            "table": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "Take a knife?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "kitchen"
+                    },
+                    {
+                        "text": "No",
+                        "next": "kitchen"
+                    }
+                ]
             }
         },
         "bathroom": {
