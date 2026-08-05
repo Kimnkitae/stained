@@ -1,15 +1,12 @@
 import Phaser from 'phaser'
-export default class NextText extends Phaser.GameObjects.Text {
-    constructor(
-        scene: Phaser.Scene,
-        text: string,
-        endAll: () => void
-    ) {
-        super(scene, 0, 0, text);
+export default class NextText  {
+    text!: Phaser.GameObjects.Text
+    holderText!: Phaser.GameObjects.Image
+    constructor(public scene: Phaser.Scene) {
+    }
 
-       
-        scene.add.existing(this);
-
-        endAll();
+    create(x: number, y: number, text: string) {
+        this.holderText = this.scene.add.image(x, y, 'holderText').setOrigin(0.5, 0.5)
+        this.text = this.scene.add.text(x, y, text, { fontSize: '16px', color: '#fff' })
     }
 }

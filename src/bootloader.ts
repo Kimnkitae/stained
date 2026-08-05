@@ -8,6 +8,11 @@ export default class bootloader extends Phaser.Scene {
     }
 
     preload() {
+        /* text */
+        this.load.image('holderText', 'assets/holder-text/holder-text.png')
+        this.load.json('chapter1', 'src/dialogues/chapter1/dialogues.json')
+
+
         /* Player */
 
         this.load.spritesheet('player', 'assets/player/player.png',
@@ -47,7 +52,7 @@ export default class bootloader extends Phaser.Scene {
         this.load.image('chapter1room', 'assets/chapter1/room/room.png')
         this.load.image('chapter1roomLeftWall', 'assets/chapter1/room/leftWall.png')
         this.load.image('chapter1roomTopWall', 'assets/chapter1/room/topWall.png')
-        this.load.image('chapter1roomDoorToRoom', 'assets/chapter1/room/doorToRoom.png')
+        this.load.image('chapter1roomDoorToApartment', 'assets/chapter1/room/doorToApartment.png')
         this.load.image('chapter1roomBed', 'assets/chapter1/room/bed.png')
         this.load.image('chapter1roomWindows', 'assets/chapter1/room/windows.png')
 

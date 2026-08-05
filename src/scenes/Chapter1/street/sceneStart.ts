@@ -12,16 +12,11 @@ export default class Chapter1streetSceneStart extends Chapter1BaseStreetScene {
     }
 
     create() {
-
-        
-
         super.create()
         this.player = new Player(this)
         this.player.create(270, 300)
         this.add.existing(this.player.sprite)
-
-        
-        
+        super.addColliders(this.player.sprite)
     }
 
     update() {
