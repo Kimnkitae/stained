@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-
+import NextText from '../../utils/texts/NextText'
 
 
 export default class Chapter1BaseStreetScene extends Phaser.Scene {
@@ -46,8 +46,10 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
 
     addColliders(colliderObject: Phaser.GameObjects.GameObject) {
         this.physics.add.collider(colliderObject, this.colliders, (player, collidedObj) => {
-            let textKey = collidedObj.getData('textKey')
-            console.log(this.streetTexts[textKey])
+            if(this.spacebar.isDown) {
+                let text = new NextText(this)
+                text.create(400, 600, this.streetTexts[collidedObj.getData('textKey')])
+            }
         })
     }
 
