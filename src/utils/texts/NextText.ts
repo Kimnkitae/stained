@@ -8,7 +8,7 @@ export default class NextText  {
     create(x: number, y: number, text: string) {
         this.holderText = this.scene.add.image(x, y, 'holderText').setOrigin(0.5, 0.5)
         this.text = this.scene.add.text(x-200, y-50, text, { fontSize: '16px', color: '#fff' })
-        nextText(text)
+        
     }
 
     nextText(text: string) {

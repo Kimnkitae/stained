@@ -46,9 +46,16 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
 
     addColliders(colliderObject: Phaser.GameObjects.GameObject) {
         this.physics.add.collider(colliderObject, this.colliders, (player, collidedObj) => {
+            
+
             if(this.spacebar.isDown) {
-                let text = new NextText(this)
-                text.create(400, 600, this.streetTexts[collidedObj.getData('textKey')])
+                if(this.walls.contains(collidedObj)) {
+                    
+                } else {
+                    let text = new NextText(this)
+                    text.create(400, 600, this.streetTexts[collidedObj.getData('textKey')])
+                }
+            
             }
         })
     }
