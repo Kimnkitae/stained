@@ -11,7 +11,8 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
     colliders!: Phaser.Physics.Arcade.StaticGroup[]
     jsonTexts!: any
     streetTexts!: any
-
+    text!: NextText
+    collidedObj!: Phaser.GameObjects.GameObject
 
     constructor(config: Phaser.Types.Scenes.SettingsConfig) {
         super(config)
@@ -40,22 +41,20 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
 
         this.colliders = [this.walls, this.trees, this.house, this.bench]
 
+        this.text = new NextText(this)
+
         const jsonTexts = this.cache.json.get('chapter1') as any
         this.streetTexts = jsonTexts.street
     }
 
     addColliders(colliderObject: Phaser.GameObjects.GameObject) {
         this.physics.add.collider(colliderObject, this.colliders, (player, collidedObj) => {
-            
-
+            const sprite = collidedObj as Phaser.Physics.Arcade.Sprite;
             if(this.spacebar.isDown) {
-                if(this.walls.contains(collidedObj)) {
+                if(this.walls.contains(sprite)) {} else {
                     
-                } else {
-                    let text = new NextText(this)
-                    text.create(400, 600, this.streetTexts[collidedObj.getData('textKey')])
+                    this.text.create(400, 600, this.streetTexts[sprite.getData('textKey')])
                 }
-            
             }
         })
     }
