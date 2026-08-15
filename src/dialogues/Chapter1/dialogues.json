@@ -9,13 +9,13 @@
         "trees": {
             "type": "chat",
             "speaker": "player",
-            "text": ["This is looks disgusting", "What if I burn it down?"],
+            "text": ["This looks kind of good", "What if I burn it down?"],
             "info": "About the trees"
         },
         "bench": {
             "type": "chat",
             "speaker": "player",
-            "text": ["This is looks disgusting", "What if I burn it down?"],
+            "text": ["I don't want to sit here", "I need to go home"],
             "info": "About the chair"
         },
         "house": {
