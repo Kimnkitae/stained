@@ -4,7 +4,9 @@ export default class Player {
     cursors!: Phaser.Types.Input.Keyboard.CursorKeys
     sprite!: Phaser.Physics.Arcade.Sprite
     isFrozen: boolean = false
+    diagonal: boolean = false
     moving: boolean = false
+    speedMoving: integer = 100
     constructor(public scene: Phaser.Scene) {
         
     }
@@ -54,26 +56,43 @@ export default class Player {
             this.sprite.anims.play('idle', true)
             return
         }
+        
 
         this.moving = this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown
-
+        this.diagonal = (this.cursors.left.isDown && this.cursors.up.isDown) || (this.cursors.left.isDown && this.cursors.down.isDown) || (this.cursors.right.isDown && this.cursors.up.isDown) || (this.cursors.right.isDown && this.cursors.down.isDown)
         if(this.moving) {
             if(this.cursors.left.isDown) {
-                this.sprite.setVelocityX(-100)
+                this.sprite.setVelocityX(-this.speedMoving)
                 this.sprite.anims.play('left', true)
             } else if(this.cursors.right.isDown) {
-                this.sprite.setVelocityX(100)
+                this.sprite.setVelocityX(this.speedMoving)
                 this.sprite.anims.play('right', true)
             } else if(this.cursors.up.isDown) {
-                this.sprite.setVelocityY(-100)
+                this.sprite.setVelocityY(-this.speedMoving)
                 this.sprite.anims.play('top', true)
             } else if(this.cursors.down.isDown) {
-                this.sprite.setVelocityY(100)
+                this.sprite.setVelocityY(this.speedMoving)
                 this.sprite.anims.play('down', true)
             }
         } else {
             this.sprite.setVelocity(0)
             this.sprite.anims.play('idle', true)
+        }
+
+        if(this.diagonal) {
+            if(this.cursors.left.isDown) {
+                this.sprite.setVelocityX(-this.speedMoving * Math.SQRT1_2)
+                this.sprite.anims.play('left', true)
+            } else if(this.cursors.right.isDown) {
+                this.sprite.setVelocityX(this.speedMoving * Math.SQRT1_2)
+                this.sprite.anims.play('right', true)
+            } else if(this.cursors.up.isDown) {
+                this.sprite.setVelocityY(-this.speedMoving * Math.SQRT1_2)
+                this.sprite.anims.play('top', true)
+            } else if(this.cursors.down.isDown) {
+                this.sprite.setVelocityY(this.speedMoving * Math.SQRT1_2)
+                this.sprite.anims.play('down', true)
+            }
         }
     }
 }
