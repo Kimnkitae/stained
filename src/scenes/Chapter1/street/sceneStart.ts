@@ -1,7 +1,10 @@
 import Phaser from 'phaser'
 import Chapter1BaseStreetScene from '../../BaseScenes/street.ts'
 import Player from '../../../utils/player/player.ts'
+
 export default class Chapter1streetSceneStart extends Chapter1BaseStreetScene {
+    player!: Player
+    
     constructor() {
         super(
             {key: 'Chapter1streetSceneStart'}
@@ -10,8 +13,13 @@ export default class Chapter1streetSceneStart extends Chapter1BaseStreetScene {
 
     create() {
         super.create()
-        const player = new Player(this)
-        player.create(270, 300)
-        this.add.existing(player.sprite)
+        this.player = new Player(this)
+        this.player.create(270, 300)
+        this.add.existing(this.player.sprite)
+        super.addColliders(this.player.sprite)
+    }
+
+    update() {
+        this.player.update()
     }
 }

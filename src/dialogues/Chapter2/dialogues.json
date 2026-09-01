@@ -1,0 +1,75 @@
+{
+    "street": {
+        "back": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["I need to run away", "Cops are going to catch me", "I need to find a place to hide"],
+            "info": "About the player's thoughts on the street"
+        },
+        "BH": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is broken house, go inside?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "BH"
+                },
+                {
+                    "text": "No",
+                    "next": "street"
+                }
+            ],
+            "info": "About the Broken House"
+        }
+    },
+    "BH": {
+        "firstLine": {
+            "type": "chat",
+            "speaker": "player",
+            "text": ["This place is creepy", "But Okay, I have only this"],
+            "info": "About the player's thoughts in the broken house"
+        },
+        "doorToStreet": { 
+            "type": "text",
+            "speaker": "System",
+            "text": ["You can't go back to the street"],
+            "info": "About going outside"
+        },
+        "bed": {
+            "type": "choice",
+            "speaker": "Speaker",
+            "question": "This bed is kind of bad, take a rest?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "thoughts"
+                },
+                {
+                    "text": "No",
+                    "next": "BH"
+                }
+            ],
+            "info": "About the Bed"
+        },
+        "mirror": {
+            "type": "text",
+            "speaker": "System",
+            "text": ["The view is good..."],
+            "info": "About the view"
+        },
+        "thoughts": {
+            "type": "text",
+            "speaker": "Speaker",
+            "text":  [
+                "I can't remember how long I've been here.",
+                "Was I really running away?",
+                "Did anyone actually chase me?",
+                "Why can't I remember their faces?",
+                "The house keeps calling me.",
+                "I should never have left.",
+                "I have to go home."
+            ]
+        }
+    }
+}

@@ -8,6 +8,11 @@ export default class bootloader extends Phaser.Scene {
     }
 
     preload() {
+        /* text */
+        this.load.image('holderText', 'assets/holder-text/holder-text.png')
+        this.load.json('chapter1', 'src/dialogues/chapter1/dialogues.json')
+
+
         /* Player */
 
         this.load.spritesheet('player', 'assets/player/player.png',
@@ -18,49 +23,49 @@ export default class bootloader extends Phaser.Scene {
 
         /* Chapter1 */
 
-        this.load.image('chapter1street', 'Chapter1/assets/street/street.png')
-        this.load.image('chapter1streetLeftWall', 'Chapter1/assets/street/leftWall.png')
-        this.load.image('chapter1streetTopWall', 'Chapter1/assets/street/topWall.png')
-        this.load.image('chapter1streetBottomWall', 'Chapter1/assets/street/bottomWall.png')
-        this.load.image('chapter1streetRightWall', 'Chapter1/assets/street/rightWall.png')
-        this.load.image('chapter1streetTrees', 'Chapter1/assets/street/trees.png')
-        this.load.image('chapter1streetBench', 'Chapter1/assets/street/bench.png')
-        this.load.image('chapter1streetHouse', 'Chapter1/assets/street/house.png')
+        this.load.image('chapter1street', 'assets/chapter1/street/street.png')
+        this.load.image('chapter1streetLeftWall', 'assets/chapter1/street/leftWall.png')
+        this.load.image('chapter1streetTopWall', 'assets/chapter1/street/topWall.png')
+        this.load.image('chapter1streetBottomWall', 'assets/chapter1/street/bottomWall.png')
+        this.load.image('chapter1streetRightWall', 'assets/chapter1/street/rightWall.png')
+        this.load.image('chapter1streetTrees', 'assets/chapter1/street/trees.png')
+        this.load.image('chapter1streetBench', 'assets/chapter1/street/bench.png')
+        this.load.image('chapter1streetHouse', 'assets/chapter1/street/house.png')
 
-        this.load.image('chapter1apartament', 'Chapter1/assets/apartament/apartament.png')
-        this.load.image('chapter1apartamentLeftWall', 'Chapter1/assets/apartament/leftWall.png')
-        this.load.image('chapter1apartamentTopWall', 'Chapter1/assets/apartament/topWall.png')
-        this.load.image('chapter1apartamentBottomWall', 'Chapter1/assets/apartament/bottomWall.png')
-        this.load.image('chapter1apartamentChair', 'Chapter1/assets/apartament/chair.png')
-        this.load.image('chapter1apartamentTV', 'Chapter1/assets/apartament/TV.png')
-        this.load.image('chapter1apartamentDoorToKitchen', 'Chapter1/assets/apartament/doorToKitchen.png')
-        this.load.image('chapter1apartamentDoorToStreet', 'Chapter1/assets/apartament/doorToStreet.png')
-        this.load.image('chapter1apartamentDoorToRoom', 'Chapter1/assets/apartament/doorToRoom.png')
+        this.load.image('chapter1apartament', 'assets/chapter1/apartament/apartament.png')
+        this.load.image('chapter1apartamentLeftWall', 'assets/chapter1/apartament/leftWall.png')
+        this.load.image('chapter1apartamentTopWall', 'assets/chapter1/apartament/topWall.png')
+        this.load.image('chapter1apartamentBottomWall', 'assets/chapter1/apartament/bottomWall.png')
+        this.load.image('chapter1apartamentChair', 'assets/chapter1/apartament/chair.png')
+        this.load.image('chapter1apartamentTV', 'assets/chapter1/apartament/TV.png')
+        this.load.image('chapter1apartamentDoorToKitchen', 'assets/chapter1/apartament/doorToKitchen.png')
+        this.load.image('chapter1apartamentDoorToStreet', 'assets/chapter1/apartament/doorToStreet.png')
+        this.load.image('chapter1apartamentDoorToRoom', 'assets/chapter1/apartament/doorToRoom.png')
 
-        this.load.image('chapter1kitchen', 'Chapter1/assets/kitchen/kitchen.png')
-        this.load.image('chapter1kitchenLeftWall', 'Chapter1/assets/kitchen/leftWall.png')
-        this.load.image('chapter1kitchenTopWall', 'Chapter1/assets/kitchen/topWall.png')
-        this.load.image('chapter1kitchenFurniture', 'Chapter1/assets/kitchen/furniture.png')
-        this.load.image('chapter1kitchenFridge', 'Chapter1/assets/kitchen/fridge.png')
-        this.load.image('chapter1kitchenDoorToRoom', 'Chapter1/assets/kitchen/doorToRoom.png')
+        this.load.image('chapter1kitchen', 'assets/chapter1/kitchen/kitchen.png')
+        this.load.image('chapter1kitchenLeftWall', 'assets/chapter1/kitchen/leftWall.png')
+        this.load.image('chapter1kitchenTopWall', 'assets/chapter1/kitchen/topWall.png')
+        this.load.image('chapter1kitchenFurniture', 'assets/chapter1/kitchen/furniture.png')
+        this.load.image('chapter1kitchenFridge', 'assets/chapter1/kitchen/fridge.png')
+        this.load.image('chapter1kitchenDoorToRoom', 'assets/chapter1/kitchen/doorToRoom.png')
         
-        this.load.image('chapter1room', 'Chapter1/assets/room/room.png')
-        this.load.image('chapter1roomLeftWall', 'Chapter1/assets/room/leftWall.png')
-        this.load.image('chapter1roomTopWall', 'Chapter1/assets/room/topWall.png')
-        this.load.image('chapter1roomDoorToRoom', 'Chapter1/assets/room/doorToRoom.png')
-        this.load.image('chapter1roomBed', 'Chapter1/assets/room/bed.png')
-        this.load.image('chapter1roomWindows', 'Chapter1/assets/room/windows.png')
+        this.load.image('chapter1room', 'assets/chapter1/room/room.png')
+        this.load.image('chapter1roomLeftWall', 'assets/chapter1/room/leftWall.png')
+        this.load.image('chapter1roomTopWall', 'assets/chapter1/room/topWall.png')
+        this.load.image('chapter1roomDoorToApartment', 'assets/chapter1/room/doorToApartment.png')
+        this.load.image('chapter1roomBed', 'assets/chapter1/room/bed.png')
+        this.load.image('chapter1roomWindows', 'assets/chapter1/room/windows.png')
 
-        this.load.image('chapter1bathroom', 'Chapter1/assets/bathroom/bathroom.png')
-        this.load.image('chapter1bathroomLeftWall', 'Chapter1/assets/bathroom/leftWall.png')
-        this.load.image('chapter1bathroomTopWall', 'Chapter1/assets/bathroom/topWall.png')
-        this.load.image('chapter1bathroomRightWall', 'Chapter1/assets/bathroom/rightWall.png')
-        this.load.image('chapter1bathroomBottomWall', 'Chapter1/assets/bathroom/bottomWall.png')
-        this.load.image('chapter1bathroomDoorToApartment', 'Chapter1/assets/bathroom/doorToApartment.png')
-        this.load.image('chapter1bathroomVanityTable', 'Chapter1/assets/bathroom/vanityTable.png')
-        this.load.image('chapter1bathroomToilet', 'Chapter1/assets/bathroom/toilet.png')
-        this.load.image('chapter1bathroomShower', 'Chapter1/assets/bathroom/shower.png')
-        this.load.image('chapter1bathroomWashingMachine', 'Chapter1/assets/bathroom/washing-machine.png')
+        this.load.image('chapter1bathroom', 'assets/chapter1/bathroom/bathroom.png')
+        this.load.image('chapter1bathroomLeftWall', 'assets/chapter1/bathroom/leftWall.png')
+        this.load.image('chapter1bathroomTopWall', 'assets/chapter1/bathroom/topWall.png')
+        this.load.image('chapter1bathroomRightWall', 'assets/chapter1/bathroom/rightWall.png')
+        this.load.image('chapter1bathroomBottomWall', 'assets/chapter1/bathroom/bottomWall.png')
+        this.load.image('chapter1bathroomDoorToApartment', 'assets/chapter1/bathroom/doorToApartment.png')
+        this.load.image('chapter1bathroomVanityTable', 'assets/chapter1/bathroom/vanityTable.png')
+        this.load.image('chapter1bathroomToilet', 'assets/chapter1/bathroom/toilet.png')
+        this.load.image('chapter1bathroomShower', 'assets/chapter1/bathroom/shower.png')
+        this.load.image('chapter1bathroomWashingMachine', 'assets/chapter1/bathroom/washing-machine.png')
 
         /* Chapter2 */
 
