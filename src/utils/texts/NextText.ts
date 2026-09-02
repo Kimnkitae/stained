@@ -6,7 +6,7 @@ export default class NextText {
     
     constructor(public scene: Phaser.Scene) { } 
     
-    create(x: number, y: number, text: string) { 
+    create(x: number, y: number, text: string[]) { 
         this.k = 0 
         this.holderText = this.scene.add.image(x, y, 'holderText').setOrigin(0.5, 0.5) 
         this.textObject = this.scene.add.text(x-200, y-50, text[this.k], { fontSize: '16px', color: '#fff' }) 

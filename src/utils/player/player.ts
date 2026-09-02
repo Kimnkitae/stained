@@ -6,10 +6,10 @@ export default class Player {
     isFrozen: boolean = false
     diagonal: boolean = false
     moving: boolean = false
-    speedMoving: integer = 100
-    constructor(public scene: Phaser.Scene) {
-        
-    }
+    velocityX: integer = 0
+    velocityY: integer = 0
+
+    constructor(public scene: Phaser.Scene) {}
 
     create(x: number, y: number) {
         this.cursors = this.scene.input.keyboard!.createCursorKeys()
@@ -51,48 +51,39 @@ export default class Player {
     }
 
     update() {
+        this.moving = this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown
+
         if(this.isFrozen) {
             this.sprite.setVelocity(0)
             this.sprite.anims.play('idle', true)
             return
         }
-        
 
-        this.moving = this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown
-        this.diagonal = (this.cursors.left.isDown && this.cursors.up.isDown) || (this.cursors.left.isDown && this.cursors.down.isDown) || (this.cursors.right.isDown && this.cursors.up.isDown) || (this.cursors.right.isDown && this.cursors.down.isDown)
         if(this.moving) {
             if(this.cursors.left.isDown) {
-                this.sprite.setVelocityX(-this.speedMoving)
+                this.sprite.setVelocityX(this.velocityX = -100)
                 this.sprite.anims.play('left', true)
             } else if(this.cursors.right.isDown) {
-                this.sprite.setVelocityX(this.speedMoving)
+                this.sprite.setVelocityX(this.velocityX = 100)
                 this.sprite.anims.play('right', true)
             } else if(this.cursors.up.isDown) {
-                this.sprite.setVelocityY(-this.speedMoving)
+                this.sprite.setVelocityY(this.velocityY = -100)
                 this.sprite.anims.play('top', true)
             } else if(this.cursors.down.isDown) {
-                this.sprite.setVelocityY(this.speedMoving)
+                this.sprite.setVelocityY(this.velocityY = 100)
                 this.sprite.anims.play('down', true)
             }
         } else {
             this.sprite.setVelocity(0)
             this.sprite.anims.play('idle', true)
+            this.velocityX = 0
+            this.velocityY = 0
         }
 
-        if(this.diagonal) {
-            if(this.cursors.left.isDown) {
-                this.sprite.setVelocityX(-this.speedMoving * Math.SQRT1_2)
-                this.sprite.anims.play('left', true)
-            } else if(this.cursors.right.isDown) {
-                this.sprite.setVelocityX(this.speedMoving * Math.SQRT1_2)
-                this.sprite.anims.play('right', true)
-            } else if(this.cursors.up.isDown) {
-                this.sprite.setVelocityY(-this.speedMoving * Math.SQRT1_2)
-                this.sprite.anims.play('top', true)
-            } else if(this.cursors.down.isDown) {
-                this.sprite.setVelocityY(this.speedMoving * Math.SQRT1_2)
-                this.sprite.anims.play('down', true)
-            }
-        }
+        if(this.velocityX !== 0 && this.velocityY !== 0) {
+            const normalizer = Math.SQRT1_2
+            this.velocityX *= normalizer
+            this.velocityY *= normalizer
+        }   
     }
 }
