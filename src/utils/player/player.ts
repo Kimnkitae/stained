@@ -51,39 +51,47 @@ export default class Player {
     }
 
     update() {
-        this.moving = this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown
-
-        if(this.isFrozen) {
+        if (this.isFrozen) {
             this.sprite.setVelocity(0)
             this.sprite.anims.play('idle', true)
             return
         }
 
-        if(this.moving) {
-            if(this.cursors.left.isDown) {
-                this.sprite.setVelocityX(this.velocityX = -100)
-                this.sprite.anims.play('left', true)
-            } else if(this.cursors.right.isDown) {
-                this.sprite.setVelocityX(this.velocityX = 100)
-                this.sprite.anims.play('right', true)
-            } else if(this.cursors.up.isDown) {
-                this.sprite.setVelocityY(this.velocityY = -100)
-                this.sprite.anims.play('top', true)
-            } else if(this.cursors.down.isDown) {
-                this.sprite.setVelocityY(this.velocityY = 100)
-                this.sprite.anims.play('down', true)
-            }
-        } else {
-            this.sprite.setVelocity(0)
-            this.sprite.anims.play('idle', true)
-            this.velocityX = 0
-            this.velocityY = 0
+        let x = 0
+        let y = 0
+
+        if (this.cursors.left.isDown) {
+            x = -1
+            this.sprite.anims.play('left', true)
+        } else if (this.cursors.right.isDown) {
+            x = 1
+            this.sprite.anims.play('right', true)
         }
 
-        if(this.velocityX !== 0 && this.velocityY !== 0) {
-            const normalizer = Math.SQRT1_2
-            this.velocityX *= normalizer
-            this.velocityY *= normalizer
-        }   
+        if (this.cursors.up.isDown) {
+            y = -1
+            this.sprite.anims.play('top', true)
+        } else if (this.cursors.down.isDown) {
+            y = 1
+            this.sprite.anims.play('down', true)
+        }
+
+        if (x === 0 && y === 0) {
+            this.sprite.setVelocity(0)
+            this.sprite.anims.play('idle', true)
+            return
+        }
+
+        const normalizer = x !== 0 && y !== 0
+            ? Math.SQRT1_2
+            : 1
+
+        this.velocityX = x * 100 * normalizer
+        this.velocityY = y * 100 * normalizer
+
+        this.sprite.setVelocity(
+            this.velocityX,
+            this.velocityY
+        )
     }
 }
