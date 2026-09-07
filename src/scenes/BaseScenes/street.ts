@@ -16,7 +16,7 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
 
     text!: NextText
 
-    // Объект, с которым сейчас можно взаимодействовать
+    
     interactableObj?: Phaser.GameObjects.GameObject
 
     constructor(config: Phaser.Types.Scenes.SettingsConfig) {
@@ -28,8 +28,7 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
             Phaser.Input.Keyboard.KeyCodes.SPACE
         )
 
-        this.add
-            .image(0, 0, 'chapter1street')
+        this.add.image(0, 0, 'chapter1street')
             
 
         this.house = this.physics.add.staticGroup()

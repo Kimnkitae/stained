@@ -8,6 +8,11 @@ export default class bootloader extends Phaser.Scene {
     }
 
     preload() {
+
+        /* effects */
+
+        this.load.image('effect-circle', 'assets/effect/circle.png')
+
         /* text */
         this.load.image('holderText', 'assets/holder-text/holder-text.png')
         this.load.json('chapter1', 'src/dialogues/chapter1/dialogues.json')
