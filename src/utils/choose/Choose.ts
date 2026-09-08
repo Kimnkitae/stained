@@ -62,9 +62,9 @@ export default class Choose{
             y + 50,
             'effect-circle')
 
-        this.leftArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
-        this.rightArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
-        this.spaceBar = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+        this.leftArrow = this.scene.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
+        this.rightArrow = this.scene.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
+        this.spaceBar = this.scene.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
 
         this.leftArrow.on('down', this.otherChoose, this)
         this.rightArrow.on('down', this.otherChoose, this)
@@ -92,5 +92,6 @@ export default class Choose{
         this.leftArrow.destroy()
         this.rightArrow.destroy()
         this.spaceBar.destroy()
+        this.scene.scene.start(this.nextScene)
     }
 }
