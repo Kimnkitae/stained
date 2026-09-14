@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import NextText from '../../utils/texts/NextText'
+import Choose from '../../utils/choose/choose'
 
 export default class Chapter1BaseStreetScene extends Phaser.Scene {
     spacebar!: Phaser.Input.Keyboard.Key
@@ -16,7 +17,7 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
 
     text!: NextText
 
-    
+    choose?: Choose
     interactableObj?: Phaser.GameObjects.GameObject
 
     constructor(config: Phaser.Types.Scenes.SettingsConfig) {
@@ -131,37 +132,69 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
                     return
                 }
 
-                const sprite =
-                    this.interactableObj as Phaser.Physics.Arcade.Sprite
+                const sprite = this.interactableObj as Phaser.Physics.Arcade.Sprite
 
                 const textKey = sprite.getData('textKey')
                 const data = this.streetTexts[textKey]
 
-                if (!data) {
-                    return
+                this.events.on(
+    'interaction',
+    () => {
+        if (!this.interactableObj) {
+            return
+        }
+
+        const sprite =
+            this.interactableObj as Phaser.Physics.Arcade.Sprite
+
+        const textKey = sprite.getData('textKey')
+        const data = this.streetTexts[textKey]
+
+        
+        if (data.type !== 'dialogue') {
+            if (this.text || this.choose) {
+                return
+            }
+        
+            onDialogueStart()
+        
+            this.choose = new Choose(this)
+        
+            this.choose.create(
+                400,
+                600,
+                data.question,
+                data.options[0].text,
+                data.options[1].text,
+                data.nextScene
+            )
+            return
+        }
+    
+        
+        if (!this.text) {
+            onDialogueStart()
+        
+            this.text = new NextText(
+                this,
+                () => {
+                    this.text = undefined!
+                    this.interactableObj = undefined
+                    onDialogueEnd()
                 }
-
-                if (!this.text) {
-                    onDialogueStart()
-
-                    this.text = new NextText(
-                        this,
-                        () => {
-                            this.text = undefined!
-                            this.interactableObj = undefined
-
-                            onDialogueEnd()
-                        }
-                    )
-
-                    this.text.create(
-                        400,
-                        600,
-                        data.text
-                    )
-                } else {
-                    this.text.nextString()
-                }
+            )
+        
+            this.text.create(
+                400,
+                600,
+                data.text
+            )
+        } else {
+            this.text.nextString()
+        }
+    }
+)
+                
             }
         )
     }

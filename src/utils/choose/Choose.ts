@@ -18,59 +18,74 @@ export default class Choose{
         public scene: Phaser.Scene
     ) {}
 
-    create(x: number, y: number, text: string, nextScene: string) {
-        this.string = text
-        this.state = true
-        this.nextScene = nextScene
+    create(
+    x: number,
+    y: number,
+    text: string,
+    firstChoose: string,
+    secondChoose: string,
+    nextScene: string
+) {
+    this.string = text
+    this.state = true
+    this.nextScene = nextScene
 
-        this.holderText = this.scene.add
-            .image(x, y, 'holderText')
-            .setOrigin(0.5, 0.5)
+    this.holderText = this.scene.add
+        .image(x, y, 'holderText')
+        .setOrigin(0.5, 0.5)
 
-        this.textObject = this.scene.add.text(
-            x - 200,
-            y - 50,
-            this.string,
-            {
-                fontSize: '16px',
-                color: '#fff'
-            }
-        )
+    this.textObject = this.scene.add.text(
+        x - 200,
+        y - 50,
+        text,
+        {
+            fontSize: '16px',
+            color: '#fff'
+        }
+    )
 
-        this.firstChooseText = this.scene.add.text(
-            x - 200,
-            y + 50,
-            this.string,
-            {
-                fontSize: '16px',
-                color: '#fff'
-            }
-        )
+    this.firstChooseText = this.scene.add.text(
+        x - 200,
+        y + 50,
+        firstChoose,
+        {
+            fontSize: '16px',
+            color: '#fff'
+        }
+    )
 
-        this.secondChooseText = this.scene.add.text(
-            x - 200,
-            y + 100,
-            this.string,
-            {
-                fontSize: '16px',
-                color: '#fff'
-            }
-        )
-        
-        this.effectCircle = this.scene.add.image(
-            x - 200,
-            y + 50,
-            'effect-circle')
+    this.secondChooseText = this.scene.add.text(
+        x - 100,
+        y + 50,
+        secondChoose,
+        {
+            fontSize: '16px',
+            color: '#fff'
+        }
+    )
 
-        this.leftArrow = this.scene.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
-        this.rightArrow = this.scene.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
-        this.spaceBar = this.scene.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+    this.effectCircle = this.scene.add.image(
+        x - 200,
+        y + 50,
+        'effect-circle'
+    )
 
-        this.leftArrow.on('down', this.otherChoose, this)
-        this.rightArrow.on('down', this.otherChoose, this)
-        this.spaceBar.on('down', this.endAll, this)
+    this.leftArrow = this.scene.input.keyboard!.addKey(
+        Phaser.Input.Keyboard.KeyCodes.LEFT
+    )
 
-    }
+    this.rightArrow = this.scene.input.keyboard!.addKey(
+        Phaser.Input.Keyboard.KeyCodes.RIGHT
+    )
+
+    this.spaceBar = this.scene.input.keyboard!.addKey(
+        Phaser.Input.Keyboard.KeyCodes.SPACE
+    )
+
+    this.leftArrow.on('down', this.otherChoose, this)
+    this.rightArrow.on('down', this.otherChoose, this)
+    this.spaceBar.on('down', this.endAll, this)
+}
 
     otherChoose() {
         if(this.state) {

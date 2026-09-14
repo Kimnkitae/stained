@@ -11,7 +11,7 @@ export default class bootloader extends Phaser.Scene {
 
         /* effects */
 
-        this.load.image('effect-circle', 'assets/effect/circle.png')
+        this.load.image('effect-circle', 'assets/effects/circle.png')
 
         /* text */
         this.load.image('holderText', 'assets/holder-text/holder-text.png')
