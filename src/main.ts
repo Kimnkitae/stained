@@ -34,3 +34,4 @@ const config: Object = {
 }
 
 new Phaser.Game(config)       
+

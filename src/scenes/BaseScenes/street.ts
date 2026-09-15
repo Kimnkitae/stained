@@ -95,18 +95,11 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
         onDialogueStart: () => void,
         onDialogueEnd: () => void
     ) {
-        /*
-         * 1. Физические столкновения
-         * Игрок не может пройти сквозь объекты.
-         */
         this.physics.add.collider(
             player,
             this.colliders
         )
 
-        /*
-         * 2. Зоны взаимодействия
-         */
         this.addInteractionZone(
             player,
             this.trees.getChildren()[0],
@@ -122,9 +115,6 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
             this.bench.getChildren()[0],
         )
 
-        /*
-         * Сохраняем callbacks
-         */
         this.events.on(
             'interaction',
             () => {
@@ -138,62 +128,62 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
                 const data = this.streetTexts[textKey]
 
                 this.events.on(
-    'interaction',
-    () => {
-        if (!this.interactableObj) {
-            return
-        }
+                    'interaction',
+                    () => {
+                        if (!this.interactableObj) {
+                            return
+                        }
+                    
+                        const sprite =
+                            this.interactableObj as Phaser.Physics.Arcade.Sprite
+                    
+                        const textKey = sprite.getData('textKey')
+                        const data = this.streetTexts[textKey]
+                    
 
-        const sprite =
-            this.interactableObj as Phaser.Physics.Arcade.Sprite
+                        if (data.type !== 'dialogue') {
+                            if (this.text || this.choose) {
+                                return
+                            }
+                        
+                            onDialogueStart()
+                        
+                            this.choose = new Choose(this)
+                        
+                            this.choose.create(
+                                400,
+                                600,
+                                data.question,
+                                data.options[0].text,
+                                data.options[1].text,
+                                data.nextScene
+                            )
+                            return
+                        }
+                    
 
-        const textKey = sprite.getData('textKey')
-        const data = this.streetTexts[textKey]
-
-        
-        if (data.type !== 'dialogue') {
-            if (this.text || this.choose) {
-                return
-            }
-        
-            onDialogueStart()
-        
-            this.choose = new Choose(this)
-        
-            this.choose.create(
-                400,
-                600,
-                data.question,
-                data.options[0].text,
-                data.options[1].text,
-                data.nextScene
-            )
-            return
-        }
-    
-        
-        if (!this.text) {
-            onDialogueStart()
-        
-            this.text = new NextText(
-                this,
-                () => {
-                    this.text = undefined!
-                    this.interactableObj = undefined
-                    onDialogueEnd()
-                }
-            )
-        
-            this.text.create(
-                400,
-                600,
-                data.text
-            )
-        } else {
-            this.text.nextString()
-        }
-    }
-)
+                        if (!this.text) {
+                            onDialogueStart()
+                        
+                            this.text = new NextText(
+                                this,
+                                () => {
+                                    this.text = undefined!
+                                    this.interactableObj = undefined
+                                    onDialogueEnd()
+                                }
+                            )
+                        
+                            this.text.create(
+                                400,
+                                600,
+                                data.text
+                            )
+                        } else {
+                            this.text.nextString()
+                        }
+                    }
+                )
                 
             }
         )

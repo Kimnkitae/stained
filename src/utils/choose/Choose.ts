@@ -55,7 +55,7 @@ export default class Choose{
     )
 
     this.secondChooseText = this.scene.add.text(
-        x - 100,
+        x - 50,
         y + 50,
         secondChoose,
         {
@@ -65,8 +65,8 @@ export default class Choose{
     )
 
     this.effectCircle = this.scene.add.image(
-        x - 200,
-        y + 50,
+        x - 220,
+        y + 60,
         'effect-circle'
     )
 
@@ -90,11 +90,11 @@ export default class Choose{
     otherChoose() {
         if(this.state) {
             this.state = false
-            this.effectCircle.setPosition(this.effectCircle.x, this.effectCircle.y + 50)
+            this.effectCircle.setPosition(this.effectCircle.x + 150, this.effectCircle.y)
 
         } else {
             this.state = true
-            this.effectCircle.setPosition(this.effectCircle.x, this.effectCircle.y - 50)
+            this.effectCircle.setPosition(this.effectCircle.x - 150, this.effectCircle.y)
         }
     }
 
