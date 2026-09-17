@@ -1,3 +1,9 @@
-export default class Chapter2BaseBrokenApartamentScene extends Phaser.Scene {
+import Phaser from 'phaser'
+import NextText from '../../utils/texts/NextText'
+import Choose from '../../utils/choose/choose'
 
+export default class Chapter2BaseBrokenApartamentScene extends Phaser.Scene {
+    constructor(config: Phaser.Types.Scenes.SettingsConfig) {
+        super(config)
+    }
 }
