@@ -139,6 +139,7 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
                     
                         const textKey = sprite.getData('textKey')
                         const data = this.streetTexts[textKey]
+                        
                     
 
                         if (data.type !== 'dialogue') {
@@ -156,7 +157,7 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
                                 data.question,
                                 data.options[0].text,
                                 data.options[1].text,
-                                data.nextScene
+                                data.options[0].next
                             )
                             return
                         }

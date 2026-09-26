@@ -25,11 +25,11 @@
             "options": [
                 {
                     "text": "Yes",
-                    "next": "apartament"
+                    "next": "Chapter1apartamentScene1"
                 },
                 {
                     "text": "No",
-                    "next": "street"
+                    "next": "Chapter1streetSceneStartter1apartamentScene1"
                 }
             ]
         }

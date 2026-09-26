@@ -107,6 +107,10 @@ export default class Choose{
         this.leftArrow.destroy()
         this.rightArrow.destroy()
         this.spaceBar.destroy()
-        this.scene.scene.start(this.nextScene)
+        if(this.state) {
+            this.scene.scene.start(this.nextScene)
+        } else {
+            
+        }
     }
 }
