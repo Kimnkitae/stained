@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 
 export default class Choose{
+    onEnd?: () => void
     textObject!: Phaser.GameObjects.Text
     holderText!: Phaser.GameObjects.Image
     firstChooseText!: Phaser.GameObjects.Text
@@ -24,8 +25,10 @@ export default class Choose{
     text: string,
     firstChoose: string,
     secondChoose: string,
-    nextScene: string
+    nextScene: string,
+    onEnd?: () => void
 ) {
+    this.onEnd = onEnd
     this.string = text
     this.state = true
     this.nextScene = nextScene
@@ -99,18 +102,22 @@ export default class Choose{
     }
 
     endAll() {
+        
         this.holderText.destroy()
         this.textObject.destroy()
         this.firstChooseText.destroy()
         this.secondChooseText.destroy()
         this.effectCircle.destroy()
-        this.leftArrow.destroy()
-        this.rightArrow.destroy()
-        this.spaceBar.destroy()
+        
+        this.leftArrow.off('down', this.otherChoose, this)
+        this.rightArrow.off('down', this.otherChoose, this)
+        this.spaceBar.off('down', this.endAll, this)
         if(this.state) {
-            this.scene.scene.start(this.nextScene)
-        } else {
-            
+             this.scene.scene.start(this.nextScene)
+             return
         }
+
+        this.onEnd?.()
+
     }
 }

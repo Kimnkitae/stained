@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import NextText from '../../utils/texts/NextText'
-import Choose from '../../utils/choose/choose'
+import Choose from '../../utils/choose/Choose'
 
 export default class Chapter1BaseStreetScene extends Phaser.Scene {
     spacebar!: Phaser.Input.Keyboard.Key
@@ -15,10 +15,11 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
     jsonTexts!: any
     streetTexts!: any
 
-    text!: NextText
-
+    text?: NextText
     choose?: Choose
     interactableObj?: Phaser.GameObjects.GameObject
+
+    private inputLock = false
 
     constructor(config: Phaser.Types.Scenes.SettingsConfig) {
         super(config)
@@ -30,7 +31,6 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
         )
 
         this.add.image(0, 0, 'chapter1street')
-            
 
         this.house = this.physics.add.staticGroup()
         this.walls = this.physics.add.staticGroup()
@@ -95,99 +95,57 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
         onDialogueStart: () => void,
         onDialogueEnd: () => void
     ) {
-        this.physics.add.collider(
-            player,
-            this.colliders
-        )
+        this.physics.add.collider(player, this.colliders)
 
-        this.addInteractionZone(
-            player,
-            this.trees.getChildren()[0],
-        )
+        this.addInteractionZone(player, this.trees.getChildren()[0])
+        this.addInteractionZone(player, this.house.getChildren()[0])
+        this.addInteractionZone(player, this.bench.getChildren()[0])
 
-        this.addInteractionZone(
-            player,
-            this.house.getChildren()[0],
-        )
+        const finish = () => {
+            this.interactableObj = undefined
+            this.inputLock = true
+            onDialogueEnd()
+        }
 
-        this.addInteractionZone(
-            player,
-            this.bench.getChildren()[0],
-        )
+        this.events.on('interaction', () => {
+            if (!this.interactableObj) return
 
-        this.events.on(
-            'interaction',
-            () => {
-                if (!this.interactableObj) {
-                    return
-                }
+            const sprite = this.interactableObj as Phaser.Physics.Arcade.Sprite
+            const data = this.streetTexts[sprite.getData('textKey')]
 
-                const sprite = this.interactableObj as Phaser.Physics.Arcade.Sprite
+            if (data.type !== 'dialogue') {
+                if (this.text || this.choose) return
 
-                const textKey = sprite.getData('textKey')
-                const data = this.streetTexts[textKey]
+                onDialogueStart()
 
-                this.events.on(
-                    'interaction',
+                this.choose = new Choose(this)
+                this.choose.create(
+                    400,
+                    600,
+                    data.question,
+                    data.options[0].text,
+                    data.options[1].text,
+                    data.options[0].next,
                     () => {
-                        if (!this.interactableObj) {
-                            return
-                        }
-                    
-                        const sprite =
-                            this.interactableObj as Phaser.Physics.Arcade.Sprite
-                    
-                        const textKey = sprite.getData('textKey')
-                        const data = this.streetTexts[textKey]
-                        
-                    
-
-                        if (data.type !== 'dialogue') {
-                            if (this.text || this.choose) {
-                                return
-                            }
-                        
-                            onDialogueStart()
-                        
-                            this.choose = new Choose(this)
-                        
-                            this.choose.create(
-                                400,
-                                600,
-                                data.question,
-                                data.options[0].text,
-                                data.options[1].text,
-                                data.options[0].next
-                            )
-                            return
-                        }
-                    
-
-                        if (!this.text) {
-                            onDialogueStart()
-                        
-                            this.text = new NextText(
-                                this,
-                                () => {
-                                    this.text = undefined!
-                                    this.interactableObj = undefined
-                                    onDialogueEnd()
-                                }
-                            )
-                        
-                            this.text.create(
-                                400,
-                                600,
-                                data.text
-                            )
-                        } else {
-                            this.text.nextString()
-                        }
+                        this.choose = undefined
+                        finish()
                     }
                 )
-                
+                return
             }
-        )
+
+            if (!this.text) {
+                onDialogueStart()
+
+                this.text = new NextText(this, () => {
+                    this.text = undefined
+                    finish()
+                })
+                this.text.create(400, 600, data.text)
+            } else {
+                this.text.nextString()
+            }
+        })
     }
 
     private addInteractionZone(
@@ -206,21 +164,23 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
 
         this.physics.add.existing(zone, true)
 
-        this.physics.add.overlap(
-            player,
-            zone,
-            () => {
-                this.interactableObj = object
-            }
-        )
+        this.physics.add.overlap(player, zone, () => {
+            this.interactableObj = object
+        })
     }
 
     update() {
-        if (
-            this.interactableObj &&
-            Phaser.Input.Keyboard.JustDown(this.spacebar)
-        ) {
-            this.events.emit('interaction')
-        }
+    const pressed = Phaser.Input.Keyboard.JustDown(this.spacebar)
+
+    if (this.inputLock) {
+        this.inputLock = false
+        return
     }
+
+    if (this.choose) return
+
+    if (pressed && this.interactableObj) {
+        this.events.emit('interaction')
+    }
+}
 }
