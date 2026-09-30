@@ -37,47 +37,20 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
         this.bench = this.physics.add.staticGroup()
         this.trees = this.physics.add.staticGroup()
 
-        // WALLS
-        this.walls
-            .create(179, 0, 'chapter1streetLeftWall')
-            .setOrigin(-0.2, -0.2)
-            .refreshBody()
+        
+        this.walls.create(179, 0, 'chapter1streetLeftWall').setOrigin(-0.2, -0.2).refreshBody()
 
-        this.walls
-            .create(92, 65, 'chapter1streetTopWall')
-            .setOrigin(-0.2, -0.2)
-            .refreshBody()
+        this.walls.create(92, 65, 'chapter1streetTopWall').setOrigin(-0.2, -0.2).refreshBody()
 
-        this.walls
-            .create(615, 0, 'chapter1streetRightWall')
-            .setOrigin(-0.2, -0.2)
-            .refreshBody()
+        this.walls.create(615, 0, 'chapter1streetRightWall').setOrigin(-0.2, -0.2).refreshBody()
 
-        this.walls
-            .create(92, 418, 'chapter1streetBottomWall')
-            .setOrigin(-0.2, -0.2)
-            .refreshBody()
+        this.walls.create(92, 418, 'chapter1streetBottomWall').setOrigin(-0.2, -0.2).refreshBody()
 
-        // TREES
-        this.trees
-            .create(160, 52, 'chapter1streetTrees')
-            .setOrigin(-0.2, -0.2)
-            .refreshBody()
-            .setData('textKey', 'trees')
+        this.trees.create(160, 52, 'chapter1streetTrees').setOrigin(-0.2, -0.2).refreshBody().setData('textKey', 'trees')
 
-        // HOUSE
-        this.house
-            .create(120, 372, 'chapter1streetHouse')
-            .setOrigin(-0.2, -0.2)
-            .refreshBody()
-            .setData('textKey', 'house')
+        this.house.create(120, 372, 'chapter1streetHouse').setOrigin(-0.2, -0.2).refreshBody().setData('textKey', 'house')
 
-        // BENCH
-        this.bench
-            .create(210, 216, 'chapter1streetBench')
-            .setOrigin(-0.2, -0.2)
-            .refreshBody()
-            .setData('textKey', 'bench')
+        this.bench.create(210, 216, 'chapter1streetBench').setOrigin(-0.2, -0.2).refreshBody().setData('textKey', 'bench')
 
         this.colliders = [
             this.walls,
