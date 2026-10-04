@@ -46,6 +46,8 @@ export default class bootloader extends Phaser.Scene {
         this.load.image('chapter1apartamentDoorToKitchen', 'assets/chapter1/apartament/doorToKitchen.png')
         this.load.image('chapter1apartamentDoorToStreet', 'assets/chapter1/apartament/doorToStreet.png')
         this.load.image('chapter1apartamentDoorToRoom', 'assets/chapter1/apartament/doorToRoom.png')
+        this.load.image('chapter1apartamentDoorToBathroom', 'assets/chapter1/apartament/doorToBathroom.png')
+        this.load.image('chapter1apartamentDoorToBalcony', 'assets/chapter1/apartament/doorToBalcony.png')
 
         this.load.image('chapter1kitchen', 'assets/chapter1/kitchen/kitchen.png')
         this.load.image('chapter1kitchenLeftWall', 'assets/chapter1/kitchen/leftWall.png')
@@ -71,6 +73,7 @@ export default class bootloader extends Phaser.Scene {
         this.load.image('chapter1bathroomToilet', 'assets/chapter1/bathroom/toilet.png')
         this.load.image('chapter1bathroomShower', 'assets/chapter1/bathroom/shower.png')
         this.load.image('chapter1bathroomWashingMachine', 'assets/chapter1/bathroom/washing-machine.png')
+
 
         /* Chapter2 */
 

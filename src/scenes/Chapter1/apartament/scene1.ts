@@ -11,20 +11,29 @@ export default class Chapter1apartamentScene1 extends Chapter1BaseApartamentScen
 
     create() {
 
-        this.add.image(500, 500, 'chapter1apartament')
+         super.create()
+        
+         this.player = new Player(this)
 
-        super.create()
-        
-        this.player = new Player(this)
-        
-        this.player.create(505, 330)
-        
-        this.add.existing(this.player.sprite)
-    }
+         this.player.create(515, 320)
 
+         this.add.existing(this.player.sprite)
+
+         super.addColliders(
+             this.player.sprite,
+             () => {
+                 this.player.isFrozen = true
+             },
+             
+             () => {
+                 this.player.isFrozen = false
+             }
+         )
+     }
+        
     update() {
         this.player.update()
-
-    
+        
+        
     }
 }
