@@ -18,7 +18,6 @@ const config: Object = {
         default: 'arcade', 
         arcade: {
             gravity: { y: 0 },
-            debug: true
         }
     },
     fps: {
