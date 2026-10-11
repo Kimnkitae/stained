@@ -68,8 +68,8 @@ export default class bootloader extends Phaser.Scene {
         this.load.image('chapter1bathroomTopWall', 'assets/chapter1/bathroom/topWall.png')
         this.load.image('chapter1bathroomRightWall', 'assets/chapter1/bathroom/rightWall.png')
         this.load.image('chapter1bathroomBottomWall', 'assets/chapter1/bathroom/bottomWall.png')
-        this.load.image('chapter1bathroomDoorToApartment', 'assets/chapter1/bathroom/doorToApartment.png')
-        this.load.image('chapter1bathroomVanityTable', 'assets/chapter1/bathroom/vanityTable.png')
+        this.load.image('chapter1bathroomDoorToApartament', 'assets/chapter1/bathroom/doorToApartament.png')
+        this.load.image('chapter1bathroomVanityTable', 'assets/chapter1/bathroom/vanity-table.png')
         this.load.image('chapter1bathroomToilet', 'assets/chapter1/bathroom/toilet.png')
         this.load.image('chapter1bathroomShower', 'assets/chapter1/bathroom/shower.png')
         this.load.image('chapter1bathroomWashingMachine', 'assets/chapter1/bathroom/washing-machine.png')
@@ -81,12 +81,27 @@ export default class bootloader extends Phaser.Scene {
 
         /* Chapter2 */
 
+
+
+        /* miniGames */
+
+        /* tetris */
+
+        this.load.image('tetrisBackground', 'assets/miniGames/tetris/tetris-background.png')
+
+        this.load.image('i-block', 'assets/miniGames/tetris/i-block.png')
+        this.load.image('j-block', 'assets/miniGames/tetris/j-block.png')
+        this.load.image('l-block', 'assets/miniGames/tetris/l-block.png')
+        this.load.image('o-block', 'assets/miniGames/tetris/o-block.png')
+        this.load.image('s-block', 'assets/miniGames/tetris/s-block.png')
+        this.load.image('t-block', 'assets/miniGames/tetris/t-block.png')
+        this.load.image('z-block', 'assets/miniGames/tetris/z-block.png')
         
     }
 
 
     create() {
-        this.scene.start('Chapter1RoomScene1')
+        this.scene.start('TetrisGame')
     }
 
 }
