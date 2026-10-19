@@ -88,6 +88,8 @@ export default class bootloader extends Phaser.Scene {
         /* tetris */
 
         this.load.image('tetrisBackground', 'assets/miniGames/tetris/tetris-background.png')
+        this.load.image('tetrisTopWall', 'assets/minigames/tetris/topWall.png')
+        this.load.image('tetrisLeftWall', 'assets/minigames/tetris/leftWall.png')
 
         this.load.image('i-block', 'assets/miniGames/tetris/i-block.png')
         this.load.image('j-block', 'assets/miniGames/tetris/j-block.png')
@@ -96,12 +98,13 @@ export default class bootloader extends Phaser.Scene {
         this.load.image('s-block', 'assets/miniGames/tetris/s-block.png')
         this.load.image('t-block', 'assets/miniGames/tetris/t-block.png')
         this.load.image('z-block', 'assets/miniGames/tetris/z-block.png')
+
         
     }
 
 
     create() {
-        this.scene.start('TetrisGame')
+        this.scene.start('Chapter1apartamentScene1')
     }
 
 }

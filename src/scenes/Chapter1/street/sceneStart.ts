@@ -1,4 +1,3 @@
-import Phaser from 'phaser'
 import Chapter1BaseStreetScene from '../../BaseScenes/street.ts'
 import Player from '../../../utils/player/player.ts'
 

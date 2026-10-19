@@ -1,19 +1,19 @@
 {
     "street": {
         "firstLine": {
-            "type": "chat",
+            "type": "dialogue",
             "speaker": "player",
             "text": ["...", "I need to go home"],
             "info": "First line in the game"
         },
         "trees": {
-            "type": "chat",
+            "type": "dialogue",
             "speaker": "player",
             "text": ["This looks kind of good", "What if I burn it down?"],
             "info": "About the trees"
         },
         "bench": {
-            "type": "chat",
+            "type": "dialogue",
             "speaker": "player",
             "text": ["I don't want to sit here", "I need to go home"],
             "info": "About the chair"
@@ -97,7 +97,7 @@
             ]
         },
         "TV": {
-            "type": "chat",
+            "type": "dialogue",
             "speaker": "player",
             "text": ["Doesn't work"],
             "info": "About the TV"
@@ -121,7 +121,7 @@
             ]
         },
         "fridge": {
-            "type": "chat",
+            "type": "dialogue",
             "speaker": "player",
             "text": ["Empty"],
             "info": "About the fridge"
@@ -130,7 +130,7 @@
 
     "room": {
         "doorToApartment": {
-            "type": "choice",
+            "type": "dialogue",
             "speaker": "System",
             "question": "This is the door to the apartment, do you want to enter?",
             "options": [
@@ -145,7 +145,7 @@
             ]
         },
         "window": {
-            "type": "chat",
+            "type": "dialogue",
             "speaker": "player",
             "text": ["I can see the street from here"],
             "info": "About the window"
@@ -186,19 +186,19 @@
             ]
         },
         "washingMachine": {
-            "type": "chat",
+            "type": "dialogue",
             "speaker": "player",
             "text": ["I dont have any clothes to wash"],
             "info": "About the washing machine"
         },
         "shower": {
-            "type": "chat",
+            "type": "dialogue",
             "speaker": "player",
             "text": ["I'm not going to take a shower right now"],
             "info": "About the shower"
         },
         "toilet": {
-            "type": "chat",
+            "type": "dialogue",
             "speaker": "player",
             "text": ["I don't need to use the toilet right now"],
             "info": "About the toilet"
@@ -223,7 +223,7 @@
     "night": {
         "room": {
             "bed": {
-                "type": "chat",
+                "type": "dialogue",
                 "speaker": "player",
                 "text": ["I don't want to sleep right now"],
                 "info": "About the bed"
@@ -308,7 +308,7 @@
                 ]
             },
             "doorToStreet": {
-                "type": "chat",
+                "type": "dialogue",
                 "speaker": "player",
                 "text": ["You need a knife to defend yourself"],
                 "info": "About the TV"
@@ -353,7 +353,7 @@
                 ]
             },
             "fridge": {
-                "type": "chat",
+                "type": "dialogue",
                 "speaker": "player",
                 "text": ["Empty"],
                 "info": "About the fridge"
@@ -391,19 +391,19 @@
                 ]
             },
             "washingMachine": {
-                "type": "chat",
+                "type": "dialogue",
                 "speaker": "player",
                 "text": ["I dont have any clothes to wash"],
                 "info": "About the washing machine"
             },
             "shower": {
-                "type": "chat",
+                "type": "dialogue",
                 "speaker": "player",
                 "text": ["I'm not going to take a shower right now"],
                 "info": "About the shower"
             },
             "toilet": {
-                "type": "chat",
+                "type": "dialogue",
                 "speaker": "player",
                 "text": ["I don't need to use the toilet right now"],
                 "info": "About the toilet"

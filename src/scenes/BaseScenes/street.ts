@@ -82,6 +82,7 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
 
         this.events.on('interaction', () => {
             if (!this.interactableObj) return
+            
 
             const sprite = this.interactableObj as Phaser.Physics.Arcade.Sprite
             const data = this.streetTexts[sprite.getData('textKey')]
