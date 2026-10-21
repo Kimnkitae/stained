@@ -105,7 +105,7 @@
     },
 
     "kitchen": {
-        "doorToApartment": {
+        "doorToApartament": {
             "type": "choice",
             "speaker": "System",
             "question": "This is the door to the apartment, do you want to enter?",
@@ -125,6 +125,12 @@
             "speaker": "player",
             "text": ["Empty"],
             "info": "About the fridge"
+        },
+        "furniture": {
+            "type": "dialogue",
+            "speaker": "player",
+            "text": ["Nothing interesting"],
+            "info": "About the furniture"
         }
     },
 

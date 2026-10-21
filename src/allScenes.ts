@@ -22,5 +22,4 @@ const allScenes: Phaser.Scene[] = [
     new TetrisGame()
 ]
 
-
 export default allScenes

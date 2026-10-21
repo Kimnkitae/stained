@@ -34,6 +34,6 @@ export default class Chapter1BathroomScene1 extends Chapter1BaseBathroomScene {
     update() {
         this.player.update()
         
-        
+        super.update()
     }
 }

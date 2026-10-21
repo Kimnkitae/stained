@@ -12,7 +12,7 @@ export default class Chapter1KitchenScene extends Phaser.Scene {
     colliders!: Phaser.Physics.Arcade.StaticGroup[]
 
     jsonTexts!: any
-    apartamentTexts!: any
+    kitchenTexts!: any
 
     text?: NextText
     choose?: Choose
@@ -33,21 +33,17 @@ export default class Chapter1KitchenScene extends Phaser.Scene {
         this.doors = this.physics.add.staticGroup()
         this.furniture = this.physics.add.staticGroup()
         
-        this.add.image(500, 505, 'chapter1kitchen')
+        this.add.image(500, 405, 'chapter1kitchen')
 
-        this.walls.create(135, 420, 'chapter1kitchenLeftWall').setOrigin(0.5).refreshBody()
-        this.walls.create(910, 420, 'chapter1kitchenLeftWall').setOrigin(0.5).refreshBody()
-        this.walls.create(523, 626, 'chapter1kitchenBottomWall').setOrigin(0.5).refreshBody()
-        this.walls.create(521, 244, 'chapter1kitchenTopWall').setOrigin(0.5).refreshBody()
+        this.walls.create(305, 405, 'chapter1kitchenLeftWall').setOrigin(0.5).refreshBody()
+        this.walls.create(501, 209, 'chapter1kitchenTopWall').setOrigin(0.5).refreshBody()
+        this.walls.create(695, 405, 'chapter1kitchenLeftWall').setOrigin(0.5).refreshBody()
+        this.walls.create(501, 600, 'chapter1kitchenTopWall').setOrigin(0.5).refreshBody()
 
-        this.doors.create(902, 369, 'chapter1kitchenDoorToApartament').setOrigin(0.5).refreshBody().setData('textKey', 'doorToApartament')
-        this.doors.create(509, 283, 'chapter1kitchenDoorToStreet').setOrigin(0.5).refreshBody().setData('textKey', 'doorToStreet')
-        this.doors.create(902, 567, 'chapter1kitchenDoorToBathroom').setOrigin(0.5).refreshBody().setData('textKey', 'doorToBathroom')
-        this.doors.create(750, 619, 'chapter1kitchenDoorToBalcony').setOrigin(0.5).refreshBody().setData('textKey', 'doorToBalcony')
-        this.doors.create(190, 285, 'chapter1kitchenDoorToRoom').setOrigin(0.5).refreshBody().setData('textKey', 'doorToRoom')
-
-        this.furniture.create(235, 487, 'chapter1kitchenChair').setOrigin(0.5).refreshBody().setData('textKey', 'chair')
-        this.furniture.create(235, 555, 'chapter1kitchenTV').setOrigin(0.5).refreshBody().setData('textKey', 'TV')
+        this.doors.create(312, 464, 'chapter1kitchenDoorToApartament').setOrigin(0.5).refreshBody().setData('textKey', 'doorToApartament')
+       
+        this.furniture.create(601, 252, 'chapter1kitchenFridge').setOrigin(0.5).refreshBody().setData('textKey', 'fridge')
+        this.furniture.create(447, 252, 'chapter1kitchenFurniture').setOrigin(0.5).refreshBody().setData('textKey', 'furniture')
 
         this.colliders = [
             this.walls,
@@ -56,7 +52,7 @@ export default class Chapter1KitchenScene extends Phaser.Scene {
         ]
 
         const jsonTexts = this.cache.json.get('chapter1') as any
-        this.apartamentTexts = jsonTexts.apartament
+        this.kitchenTexts = jsonTexts.kitchen
     }
 
     addColliders(
@@ -85,7 +81,7 @@ export default class Chapter1KitchenScene extends Phaser.Scene {
                 if (!this.interactableObj) return
                 
                 const sprite = this.interactableObj as Phaser.Physics.Arcade.Sprite
-                const data = this.apartamentTexts[sprite.getData('textKey')]
+                const data = this.kitchenTexts[sprite.getData('textKey')]
     
                 if (data.type !== 'dialogue') {
                     if (this.text || this.choose) return

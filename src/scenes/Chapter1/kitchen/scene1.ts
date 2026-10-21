@@ -15,7 +15,7 @@ export default class Chapter1KitchenScene1 extends Chapter1BaseKitchenScene {
         
          this.player = new Player(this)
 
-         this.player.create(350, 360)
+         this.player.create(350, 460)
 
          this.add.existing(this.player.sprite)
 
@@ -34,6 +34,6 @@ export default class Chapter1KitchenScene1 extends Chapter1BaseKitchenScene {
     update() {
         this.player.update()
         
-        
+        super.update()
     }
 }
