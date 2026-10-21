@@ -29,7 +29,7 @@
                 },
                 {
                     "text": "No",
-                    "": "Chapter1streetSceneStartter1apartamentScene1"
+                    "next": "Chapter1streetSceneStart"
                 }
             ]
         }
@@ -87,7 +87,7 @@
             "question": "This is the door to the street, do you want to enter?",
             "options": [
                 {
-                    "text": "Yes",
+                    "text": "Yes",  
                     "next": "street"
                 },
                 {

@@ -1,12 +1,12 @@
 import Chapter1BaseKitchenScene from '../../BaseScenes/kitchen'
 import Player from '../../../utils/player/player.ts'
 
-export default class Chapter1kitchenScene1 extends Chapter1BaseKitchenScene {
+export default class Chapter1KitchenScene1 extends Chapter1BaseKitchenScene {
 
     player!: Player
 
     constructor() {
-        super({key: 'Chapter1kitchenScene1'})
+        super({key: 'Chapter1KitchenScene1'})
     }
 
     create() {

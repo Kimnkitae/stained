@@ -35,19 +35,19 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
         
         this.add.image(500, 505, 'chapter1apartament')
 
-        this.walls.create(135, 420, 'chapter1apartamentLeftWall').refreshBody()
-        this.walls.create(910, 420, 'chapter1apartamentLeftWall').refreshBody()
-        this.walls.create(523, 626, 'chapter1apartamentBottomWall').refreshBody()
-        this.walls.create(521, 244, 'chapter1apartamentTopWall').refreshBody()
+        this.walls.create(135, 420, 'chapter1apartamentLeftWall').setOrigin(0.5).refreshBody()
+        this.walls.create(910, 420, 'chapter1apartamentLeftWall').setOrigin(0.5).refreshBody()
+        this.walls.create(523, 626, 'chapter1apartamentBottomWall').setOrigin(0.5).refreshBody()
+        this.walls.create(521, 244, 'chapter1apartamentTopWall').setOrigin(0.5).refreshBody()
 
-        this.doors.create(902, 369, 'chapter1apartamentDoorToKitchen').refreshBody().setData('textKey', 'doorToKitchen')
-        this.doors.create(509, 283, 'chapter1apartamentDoorToStreet').refreshBody().setData('textKey', 'doorToStreet')
-        this.doors.create(902, 567, 'chapter1apartamentDoorToBathroom').refreshBody().setData('textKey', 'doorToBathroom')
-        this.doors.create(750, 619, 'chapter1apartamentDoorToBalcony').refreshBody().setData('textKey', 'doorToBalcony')
-        this.doors.create(190, 285, 'chapter1apartamentDoorToRoom').refreshBody().setData('textKey', 'doorToRoom')
+        this.doors.create(902, 369, 'chapter1apartamentDoorToKitchen').setOrigin(0.5).refreshBody().setData('textKey', 'doorToKitchen')
+        this.doors.create(509, 283, 'chapter1apartamentDoorToStreet').setOrigin(0.5).refreshBody().setData('textKey', 'doorToStreet')
+        this.doors.create(902, 567, 'chapter1apartamentDoorToBathroom').setOrigin(0.5).refreshBody().setData('textKey', 'doorToBathroom')
+        this.doors.create(750, 619, 'chapter1apartamentDoorToBalcony').setOrigin(0.5).refreshBody().setData('textKey', 'doorToBalcony')
+        this.doors.create(190, 285, 'chapter1apartamentDoorToRoom').setOrigin(0.5).refreshBody().setData('textKey', 'doorToRoom')
 
-        this.furniture.create(235, 487, 'chapter1apartamentChair').refreshBody().setData('textKey', 'chair')
-        this.furniture.create(235, 555, 'chapter1apartamentTV').refreshBody().setData('textKey', 'TV')
+        this.furniture.create(235, 487, 'chapter1apartamentChair').setOrigin(0.5).refreshBody().setData('textKey', 'chair')
+        this.furniture.create(235, 555, 'chapter1apartamentTV').setOrigin(0.5).refreshBody().setData('textKey', 'TV')
 
         this.colliders = [
             this.walls,
@@ -66,9 +66,14 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
         ) {
             this.physics.add.collider(player, this.colliders)
     
-            this.addInteractionZone(player, this.furniture.getChildren()[0])
-            this.addInteractionZone(player, this.doors.getChildren()[0])
-            this.addInteractionZone(player, this.walls.getChildren()[0])
+            this.furniture.getChildren().forEach(object => {
+                this.addInteractionZone(player, object)
+            })
+            
+            this.doors.getChildren().forEach(object => {
+                this.addInteractionZone(player, object)
+            })
+            
     
             const finish = () => {
                 this.interactableObj = undefined
