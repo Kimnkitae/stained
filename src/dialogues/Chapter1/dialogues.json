@@ -88,13 +88,17 @@
             "options": [
                 {
                     "text": "Yes",  
-                    "next": "street"
+                    "next": "Chapter1streetSceneStart"
                 },
                 {
                     "text": "No",
                     "next": "apartament"
                 }
-            ]
+            ],
+            "position": {
+                "x": 400,
+                "y": 500
+            }
         },
         "TV": {
             "type": "dialogue",

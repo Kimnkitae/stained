@@ -102,6 +102,7 @@ export default class Chapter1BaseStreetScene extends Phaser.Scene {
                     data.options[0].next,
                     () => {
                         this.choose = undefined
+                        
                         finish()
                     }
                 )

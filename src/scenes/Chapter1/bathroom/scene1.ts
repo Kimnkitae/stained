@@ -9,13 +9,17 @@ export default class Chapter1BathroomScene1 extends Chapter1BaseBathroomScene {
         super({key: 'Chapter1BathroomScene1'})
     }
 
-    create() {
+    create(playerPosition?: {x: number, y: number}) {
 
          super.create()
+
+         const x = playerPosition?.x ?? 370
+        const y = playerPosition?.y ?? 540
+
         
          this.player = new Player(this)
 
-         this.player.create(370, 420)
+         this.player.create(x, y)
 
          this.add.existing(this.player.sprite)
 

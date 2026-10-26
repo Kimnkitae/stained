@@ -11,6 +11,7 @@ import Chapter1BathroomScene1 from './scenes/Chapter1/bathroom/scene1.ts'
 /* games */
 
 import TetrisGame from './miniGames/tetris/tetrisGame.ts'
+import ChessGame from './miniGames/chess/chessGame.ts'
 
 const allScenes: Phaser.Scene[] = [
     new Chapter1streetSceneStart(),
@@ -19,7 +20,8 @@ const allScenes: Phaser.Scene[] = [
     new Chapter1BalconyScene1(),
     new Chapter1RoomScene1(),
     new Chapter1BathroomScene1(),
-    new TetrisGame()
+    new TetrisGame(),
+    new ChessGame()
 ]
 
 export default allScenes

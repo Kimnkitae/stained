@@ -99,7 +99,7 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
                         data.question,
                         data.options[0].text,
                         data.options[1].text,
-                        data.options[0].next,
+                        data.options[0].next({x: data.position.x, y: data.position.y}),
                         () => {
                             this.choose = undefined
                             finish()
@@ -128,12 +128,6 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
         ) {
             const sprite = object as Phaser.Physics.Arcade.Sprite
             const body = sprite.body as Phaser.Physics.Arcade.StaticBody
-
-              console.log('Объект:', sprite.texture.key, 
-                'body.center:', body.center.x, body.center.y,
-                'body.size:', body.width, body.height,
-                'sprite pos:', sprite.x, sprite.y,
-                'origin:', sprite.originX, sprite.originY)
     
             const zone = this.add.zone(
                 body.center.x,
@@ -145,25 +139,23 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
             this.physics.add.existing(zone, true)
     
             this.physics.add.overlap(player, zone, () => {
-                console.log('Overlap detected with zone:', object);
                 this.interactableObj = object
             })
         }
     
         update() {
-            console.log('base update called')
-        const pressed = Phaser.Input.Keyboard.JustDown(this.spacebar)
-    
-        if (this.inputLock) {
-            this.inputLock = false
-            return
+            
+            const pressed = Phaser.Input.Keyboard.JustDown(this.spacebar)
+            
+            if (this.inputLock) {
+                this.inputLock = false
+                return
+            }
+        
+            if (this.choose) return
+        
+            if (pressed && this.interactableObj) {
+                this.events.emit('interaction')
+            }
         }
-    
-        if (this.choose) return
-    
-        if (pressed && this.interactableObj) {
-            console.log('interaction')
-            this.events.emit('interaction')
-        }
-    }
 }

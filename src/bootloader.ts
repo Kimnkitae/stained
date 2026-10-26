@@ -104,7 +104,7 @@ export default class bootloader extends Phaser.Scene {
 
 
     create() {
-        this.scene.start('Chapter1BathroomScene1')
+        this.scene.start('TetrisGame')
     }
 
 }
