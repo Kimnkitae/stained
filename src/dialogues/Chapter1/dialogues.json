@@ -108,6 +108,23 @@
         }
     },
 
+    "balcony": {
+        "doorToApartament": {
+            "type": "choice",
+            "question": "Go back to the apartment?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "Chapter1ApartamentScene2"
+                },
+                {
+                    "text": "No",
+                    "next": "balcony"
+                }
+            ]
+        }
+    },
+
     "kitchen": {
         "doorToApartament": {
             "type": "choice",
@@ -146,7 +163,7 @@
             "options": [
                 {
                     "text": "Yes",
-                    "next": "apartament"
+                    "next": "Chapter1ApartamentScene2"
                 },
                 {
                     "text": "No",

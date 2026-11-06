@@ -18,6 +18,8 @@ export default class TetrisGame extends Phaser.Scene {
         this.blocks = this.physics.add.group()
         this.walls = this.physics.add.staticGroup()
 
+        this.add.existing(this.walls)
+        this.add.existing(this.blocks)
         this.walls.create(650, 705, 'tetrisTopWall')
         this.walls.create(395, 200, 'tetrisLeftWall')
         this.walls.create(905, 200, 'tetrisLeftWall')
@@ -34,12 +36,13 @@ export default class TetrisGame extends Phaser.Scene {
         this.physics.add.collider(this.blocks, this.blocks)
         this.physics.add.collider(this.blocks, this.walls)
 
-        this.physics.world.gravity.y = 300
+        this.physics.world.gravity.y = 100
 
         
         this.input.keyboard!.on('keyup-LEFT', () => {
             this.currentBlock.x -= 50
         })
+
         this.input.keyboard!.on('keyup-RIGHT', () => {
             this.currentBlock.x += 50
         })
@@ -53,15 +56,11 @@ export default class TetrisGame extends Phaser.Scene {
     
 
     update() {
-        const body = this.currentBlock.body as Phaser.Physics.Arcade.Body;
+        const body = this.currentBlock.body as Phaser.Physics.Arcade.Body
         if (this.fall && (body.touching.down || body.blocked.down)) {
+            if(this.currentBlock)
             this.fall = false
             this.nextBlockSpawn()
         }
     }
-
-
-    
-
-
 }
