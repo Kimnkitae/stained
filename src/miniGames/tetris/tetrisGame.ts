@@ -40,14 +40,26 @@ export default class TetrisGame extends Phaser.Scene {
 
         
         this.input.keyboard!.on('keyup-LEFT', () => {
-            this.currentBlock.x -= 50
+            this.moveBlock(-1)
         })
 
         this.input.keyboard!.on('keyup-RIGHT', () => {
-            this.currentBlock.x += 50
+            this.moveBlock(1)
         })
-
     }
+
+    moveBlock(direction: number) {
+        const body = this.currentBlock.body as Phaser.Physics.Arcade.Body
+
+        const newX = this.currentBlock.x + direction * 50
+
+        
+        if (newX < 445 || newX > 885) return
+
+        this.currentBlock.setX(newX)
+    }
+
+        
     nextBlockSpawn() {
         this.currentBlock = this.blocks.create(610, 50, this.blockTypes[randomInt(this.blockTypes.length)])
         this.fall = true
