@@ -39,3 +39,6 @@ export default class Chapter1apartamentScene1 extends Chapter1BaseApartamentScen
     }
 }
 
+
+
+

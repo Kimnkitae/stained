@@ -43,7 +43,7 @@
             "options": [
                 {
                     "text": "Yes",
-                    "next": "room"
+                    "next": "Chapter1RoomScene1"
                 },
                 {
                     "text": "No",
@@ -171,7 +171,7 @@
                 }
             ]
         },
-        "window": {
+        "windows": {
             "type": "dialogue",
             "speaker": "player",
             "text": ["I can see the street from here"],
@@ -185,7 +185,7 @@
           [
             { 
               "text": "Yes", 
-              "next": "roomNight"
+              "next": "Chapter1nightRoomScene1"
               
             },
             { 

@@ -33,6 +33,6 @@ export default class Chapter1RoomScene1 extends Chapter1BaseRoomScene {
     update() {
         this.player.update()
         
-        
+        super.update()
     }
 }

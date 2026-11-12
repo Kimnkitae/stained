@@ -50,7 +50,7 @@ export default class Chapter1BaseRoomScene extends Phaser.Scene {
         this.roomTexts = this.jsonTexts.room
     }
 
-    private createWalls() {
+    createWalls() {
         this.walls.create(352, 300, 'chapter1roomLeftWall')
             .setOrigin(0.5)
             .refreshBody()
@@ -68,7 +68,7 @@ export default class Chapter1BaseRoomScene extends Phaser.Scene {
             .refreshBody()
     }
 
-    private createDoors() {
+    createDoors() {
         this.doors.create(
             415,
             517,
@@ -79,7 +79,7 @@ export default class Chapter1BaseRoomScene extends Phaser.Scene {
             .setData('textKey', 'doorToApartment')
     }
 
-    private createFurniture() {
+    createFurniture() {
         this.furniture.create(568, 210, 'chapter1roomBed')
             .setOrigin(0.5)
             .refreshBody()
@@ -135,7 +135,7 @@ export default class Chapter1BaseRoomScene extends Phaser.Scene {
         })
     }
 
-    private startChoice(data: any, finish: () => void) {
+    startChoice(data: any, finish: () => void) {
         this.choose = new Choose(this)
 
         this.choose.create(
@@ -152,7 +152,7 @@ export default class Chapter1BaseRoomScene extends Phaser.Scene {
         )
     }
 
-    private startDialogue(data: any, finish: () => void) {
+    startDialogue(data: any, finish: () => void) {
         this.text = new NextText(this, () => {
             this.text = undefined
             finish()
@@ -161,7 +161,7 @@ export default class Chapter1BaseRoomScene extends Phaser.Scene {
         this.text.create(400, 600, data.text)
     }
 
-    private addInteractionZone(
+    addInteractionZone(
         player: Phaser.GameObjects.GameObject,
         object: Phaser.GameObjects.GameObject
     ) {
