@@ -1,5 +1,6 @@
 import Chapter1BaseRoomScene from '../../BaseScenes/room'
 import Player from '../../../utils/player/player.ts'
+import {karma} from '../../../karma.ts'
 
 export default class Chapter1RoomScene1 extends Chapter1BaseRoomScene {
     player!: Player
@@ -11,7 +12,8 @@ export default class Chapter1RoomScene1 extends Chapter1BaseRoomScene {
      create() {
     
          super.create()
-        
+        karma += 1
+        console.log('karma: ', karma)
          this.player = new Player(this)
 
          this.player.create(415, 470)

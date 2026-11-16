@@ -1,0 +1,1 @@
+export let karma = 0

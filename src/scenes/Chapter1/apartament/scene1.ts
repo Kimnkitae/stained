@@ -1,16 +1,18 @@
 import Chapter1BaseApartamentScene from '../../BaseScenes/apartament'
 import Player from '../../../utils/player/player.ts'
+import '../../../karma.ts'
 
-export default class Chapter1apartamentScene1 extends Chapter1BaseApartamentScene {
+export default class Chapter1ApartamentScene1 extends Chapter1BaseApartamentScene {
 
     player!: Player
 
     constructor() {
-        super({key: 'Chapter1apartamentScene1'})
+        super({key: 'Chapter1ApartamentScene1'})
     }
 
     create() {
 
+        
          super.create()
         
          this.player = new Player(this)

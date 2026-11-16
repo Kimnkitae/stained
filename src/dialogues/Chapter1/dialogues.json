@@ -25,7 +25,7 @@
             "options": [
                 {
                     "text": "Yes",
-                    "next": "Chapter1apartamentScene1"
+                    "next": "Chapter1ApartamentScene1"
                 },
                 {
                     "text": "No",
@@ -157,13 +157,13 @@
 
     "room": {
         "doorToApartment": {
-            "type": "dialogue",
+            "type": "choice",
             "speaker": "System",
             "question": "This is the door to the apartment, do you want to enter?",
             "options": [
                 {
                     "text": "Yes",
-                    "next": "Chapter1ApartamentScene2"
+                    "next": "Chapter1ApartamentScene1"
                 },
                 {
                     "text": "No",
