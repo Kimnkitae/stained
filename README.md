@@ -18,6 +18,7 @@ Stained — это мой проект для демонстрации навы�
 Phaser.js — основной игровой фреймворк.
 
 HTML5/CSS3 — структура и стилизация интерфейса.
+TS.
 
 Git — контроль версий проекта.
 
@@ -42,8 +43,7 @@ git clone https://github.com/KimnKitae/stained.git
 Plaintext
 stained/
 ├── assets/         # Изображения, звуки, шрифты
-├── js/
-│   ├── game.js     # Основная логика Phaser
+│   ├── game.еs     # Основная логика Phaser
 │   └── scenes/     # Сцены игры (меню, диалоги, хоррор-эпизоды)
 ├── index.html      # Точка входа
 └── style.css       # Стили оформления
