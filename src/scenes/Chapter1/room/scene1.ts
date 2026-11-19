@@ -12,15 +12,15 @@ export default class Chapter1RoomScene1 extends Chapter1BaseRoomScene {
      create() {
     
          super.create()
-        karma += 1
-        console.log('karma: ', karma)
-         this.player = new Player(this)
+        
+        
+        this.player = new Player(this)
 
-         this.player.create(415, 470)
+        this.player.create(415, 470)
 
-         this.add.existing(this.player.sprite)
+        this.add.existing(this.player.sprite)
 
-         super.addColliders(
+        super.addColliders(
              this.player.sprite,
              () => {
                  this.player.isFrozen = true
@@ -30,7 +30,7 @@ export default class Chapter1RoomScene1 extends Chapter1BaseRoomScene {
                  this.player.isFrozen = false
              }
          )
-     }
+    }
         
     update() {
         this.player.update()

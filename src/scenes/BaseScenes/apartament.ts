@@ -93,6 +93,7 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
         }
 
         this.events.on('interaction', () => {
+            console.log('interaction')
             if (!this.interactableObj) return
             if (this.text || this.choose) return
 
