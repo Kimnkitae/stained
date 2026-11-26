@@ -178,20 +178,20 @@
             "info": "About the fridge"
         },
         "table": {
-                "type": "choice",
-                "speaker": "System",
-                "question": "Take a knife?",
-                "options": [
-                    {
-                        "text": "Yes",
-                        "next": "Chapter1nightApartamentScene2"
-                    },
-                    {
-                        "text": "No",
-                        "next": "kitchen"
-                    }
-                ]
-            }
+            "type": "choice",
+            "speaker": "System",
+            "question": "Take a knife?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "Chapter1nightApartamentScene2"
+                },
+                {
+                    "text": "No",
+                    "next": "kitchen"
+                }
+            ]
+        }
     },
 
     "room": {
