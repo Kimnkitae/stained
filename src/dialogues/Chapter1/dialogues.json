@@ -66,6 +66,21 @@
                 }
             ]
         },
+        "doorTonightKitchen": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the door to the kitchen, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "doorTonightKitchen"
+                },
+                {
+                    "text": "No",
+                    "next": "apartament"
+                }
+            ]
+        },
         "doorToBathroom": {
             "type": "choice",
             "speaker": "System",
@@ -141,18 +156,42 @@
                 }
             ]
         },
+        "doorTonightApartament": {
+            "type": "choice",
+            "speaker": "System",
+            "question": "This is the door to the apartment, do you want to enter?",
+            "options": [
+                {
+                    "text": "Yes",
+                    "next": "Chapter1nightFinalScene2"
+                },
+                {
+                    "text": "No",
+                    "next": "kitchen"
+                }
+            ]
+        },
         "fridge": {
             "type": "dialogue",
             "speaker": "player",
             "text": ["Empty"],
             "info": "About the fridge"
         },
-        "furniture": {
-            "type": "dialogue",
-            "speaker": "player",
-            "text": ["Nothing interesting"],
-            "info": "About the furniture"
-        }
+        "table": {
+                "type": "choice",
+                "speaker": "System",
+                "question": "Take a knife?",
+                "options": [
+                    {
+                        "text": "Yes",
+                        "next": "Chapter1nightApartamentScene2"
+                    },
+                    {
+                        "text": "No",
+                        "next": "kitchen"
+                    }
+                ]
+            }
     },
 
     "room": {
@@ -172,10 +211,21 @@
             ]
         },
         "windows": {
-            "type": "dialogue",
+            "type": "choice",
             "speaker": "player",
-            "text": ["I can see the street from here"],
-            "info": "About the window"
+            "text": ["I can see the street from here, look at it?"],
+            "options": 
+            [
+              { 
+                "text": "Yes", 
+                "next": "Chapter1nightRoomScene2"
+                
+              },
+              { 
+                "text": "No", 
+                "next": "Chapter1nightRoomScene1"
+              }
+            ]
         },
         "bed": {
           "type": "choice",

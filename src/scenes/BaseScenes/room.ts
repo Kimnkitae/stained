@@ -40,7 +40,6 @@ export default class Chapter1BaseRoomScene extends Phaser.Scene {
     
         this.furniture.create(568, 210, 'chapter1roomBed').setOrigin(0.5).refreshBody().setData('textKey', 'bed')
 
-        this.furniture.create(478, 95, 'chapter1roomWindows').setOrigin(0.5).refreshBody().setData('textKey', 'windows')
 
         this.colliders = [
             this.walls,

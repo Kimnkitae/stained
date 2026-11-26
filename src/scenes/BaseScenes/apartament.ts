@@ -25,6 +25,8 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
     }
 
     create() {
+        
+
         this.spacebar = this.input.keyboard!.addKey(
             Phaser.Input.Keyboard.KeyCodes.SPACE
         )
@@ -116,6 +118,8 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
         })
     }
 
+    
+
     private startChoice(data: any, finish: () => void) {
         this.choose = new Choose(this)
 
@@ -176,6 +180,11 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
         })
     }
 
+    finish() {
+        this.events.off('interaction')
+        this.events.off('postupdate')
+    }
+
     update() {
         const pressed = Phaser.Input.Keyboard.JustDown(this.spacebar)
 
@@ -184,7 +193,7 @@ export default class Chapter1BaseApartamentScene extends Phaser.Scene {
                 this.inputLock = false
             }
 
-            return
+            return 
         }
 
         if (this.choose) return

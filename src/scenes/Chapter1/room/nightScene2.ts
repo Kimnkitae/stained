@@ -1,7 +1,7 @@
-import Chapter1BaseRoomScene from '../../BaseScenes/room'
+import Chapter1BaseNightRoomScene from '../../BaseScenes/nightRoom.ts'
 import Player from '../../../utils/player/player.ts'
 
-export default class Chapter1RoomScene1 extends Chapter1BaseRoomScene {
+export default class Chapter1nightRoomScene1 extends Chapter1BaseNightRoomScene {
     player!: Player
 
     constructor() {
@@ -11,10 +11,16 @@ export default class Chapter1RoomScene1 extends Chapter1BaseRoomScene {
      create() {
     
          super.create()
-        
+        let darkOverlay = this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0x000000);
+    
+    // Сдвигаем точку привязки в левый верхний угол
+    darkOverlay.setOrigin(0, 0);
+    
+    // Устанавливаем степень затемнения (0 — прозрачный, 1 — полностью черный)
+    darkOverlay.setAlpha(0.5); 
          this.player = new Player(this)
 
-         this.player.create(415, 470)
+         this.player.create(485, 200)
 
          this.add.existing(this.player.sprite)
 
